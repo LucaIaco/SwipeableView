@@ -41,13 +41,13 @@ class ShowcaseViewController_4: UIViewController {
         self.swipeableView.isPanGestureInverted = true
         self.swipeableView.flexibleLayout = .init(with: flexLayout, end: flexLayout.constant * 2)
         // add alpha animation to the label
-        self.swipeableView.addAnimableItem(SwipeableAnimableAlpha(with: self.lblHello, end: 1.0))
+        self.swipeableView.addAnimatableItem(SwipeableItemAlpha(with: self.lblHello, end: 1.0))
         
         // make fancy animation with alpha
         self.stackView.arrangedSubviews.compactMap({$0 as? UIStackView}).forEach { (stackViewRow) in
             stackViewRow.arrangedSubviews.forEach { (squareView) in
                 let alpha:CGFloat = squareView.tag == 1 ? 1.0 : 0.0
-                self.swipeableView.addAnimableItem(SwipeableAnimableAlpha(with: squareView, end:alpha))
+                self.swipeableView.addAnimatableItem(SwipeableItemAlpha(with: squareView, end:alpha))
             }
         }
         

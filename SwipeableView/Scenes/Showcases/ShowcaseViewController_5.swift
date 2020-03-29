@@ -60,8 +60,8 @@ class ShowcaseViewController_5: UIViewController {
         for i in 0..<viewGroup.count {
             let endCenter = CGPoint(x: viewDot.center.x + radius * cos(step * CGFloat(i)),
                                     y: viewDot.center.y + radius * sin(step * CGFloat(i)))
-            // add the animable for the view.center
-            self.swipeableView.addAnimableItem(SwipeableAnimableCenter(with: viewGroup[i], end:endCenter))
+            // add the animatable for the view.center
+            self.swipeableView.addAnimatableItem(SwipeableItemCenter(with: viewGroup[i], end:endCenter))
         }
     }
 

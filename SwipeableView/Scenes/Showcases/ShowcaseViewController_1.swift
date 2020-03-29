@@ -59,6 +59,21 @@ class ShowcaseViewController_1: UIViewController {
         }
     }
     
+    @IBAction func onIndicatorColorsChanged(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            swipeView.indicatorColors = SwipeableView.defaultIndicatorColors
+        case 1:
+            swipeView.indicatorColors = (.green,.red)
+        case 2:
+            swipeView.indicatorColors = (.black,.white)
+        case 3:
+            swipeView.indicatorColors = (.yellow,.blue)
+        default:
+            break
+        }
+    }
+    
     @IBAction func onExpandStateChanged(_ sender: UISwitch) {
         self.swipeView.isExpanded = sender.isOn
     }
@@ -69,6 +84,10 @@ class ShowcaseViewController_1: UIViewController {
     
     @IBAction func onHideWhenExpandedChanged(_ sender: UISwitch) {
         self.swipeView.hideIndicatorWhenExpanded = sender.isOn
+    }
+    
+    @IBAction func onShowRoundedCornersChanged(_ sender: UISwitch) {
+        self.swipeView.hasRoundedCorners = sender.isOn
     }
     
     @IBAction func onPlugChildViewChanged(_ sender: UISwitch) {

@@ -42,10 +42,10 @@ class ShowcaseHomeViewController: UIViewController {
         ShowCase(title: "Basic configurations", segueId: "segueShowcase1"),
         ShowCase(title: "Indicator positions", segueId: "segueShowcase2"),
         ShowCase(title: "Item: Layout", segueId: "segueShowcase3"),
-        ShowCase(title: "Animable Item: Alpha channel", segueId: "segueShowcase4"),
-        ShowCase(title: "Animable Item: View.center", segueId: "segueShowcase5"),
-        ShowCase(title: "Animable Item: UIColor", segueId: "segueShowcase6"),
-        ShowCase(title: "Animable Item: Scale / Rotate", segueId: "segueShowcase7")
+        ShowCase(title: "Animatable Item: Alpha channel", segueId: "segueShowcase4"),
+        ShowCase(title: "Animatable Item: View.center", segueId: "segueShowcase5"),
+        ShowCase(title: "Animatable Item: UIColor", segueId: "segueShowcase6"),
+        ShowCase(title: "Animatable Item: Scale / Rotate", segueId: "segueShowcase7")
     ]
 
     //MARK: View lifecylce
@@ -58,14 +58,14 @@ class ShowcaseHomeViewController: UIViewController {
         // set the flexible layout which will allow the swipeable view to expand and collapse
         self.swipeableView.flexibleLayout = .init(with: swipeableFlexLayout, verticalAxis: true, end: 100.0)
         
-        // add extra animable item which need to be interpolated along with the expand/collapse
-        self.swipeableView.addAnimableItem(SwipeableAnimableLayout(with: topLabelText1Layout, end: -200))
-        self.swipeableView.addAnimableItem(SwipeableAnimableAlpha(with: labelText1))
-        self.swipeableView.addAnimableItem(SwipeableAnimableTransformation(scaling: labelText1))
-        self.swipeableView.addAnimableItem(SwipeableAnimableLayout(with: bottomLabelText2Layout, end: 40.0))
-        self.swipeableView.addAnimableItem(SwipeableAnimableAlpha(with: labelText2, end: 1.0))
+        // add extra animatable item which need to be interpolated along with the expand/collapse
+        self.swipeableView.addAnimatableItem(SwipeableItemLayout(with: topLabelText1Layout, end: -200))
+        self.swipeableView.addAnimatableItem(SwipeableItemAlpha(with: labelText1))
+        self.swipeableView.addAnimatableItem(SwipeableItemTransformation(scaling: labelText1))
+        self.swipeableView.addAnimatableItem(SwipeableItemLayout(with: bottomLabelText2Layout, end: 40.0))
+        self.swipeableView.addAnimatableItem(SwipeableItemAlpha(with: labelText2, end: 1.0))
         self.showCasesTableView.alpha = 0
-        self.swipeableView.addAnimableItem(SwipeableAnimableAlpha(with: showCasesTableView, end: 1.0))
+        self.swipeableView.addAnimatableItem(SwipeableItemAlpha(with: showCasesTableView, end: 1.0))
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

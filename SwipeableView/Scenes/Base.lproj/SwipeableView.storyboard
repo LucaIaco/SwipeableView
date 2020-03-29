@@ -1381,12 +1381,12 @@
                     </view>
                     <navigationItem key="navigationItem" id="BXX-9B-gMs"/>
                     <connections>
-                        <outlet property="animableLayoutMouthPart0" destination="qW4-Kg-Pdy" id="Nxo-Gq-bjh"/>
-                        <outlet property="animableLayoutMouthPart1" destination="qcg-DB-XMz" id="PwQ-kf-rYM"/>
-                        <outlet property="animableLayoutMouthPart2" destination="z2c-aR-xL5" id="jvB-qp-uDf"/>
-                        <outlet property="animableLayoutMouthPart3" destination="XhD-nB-Q4I" id="Gz7-F5-Wfx"/>
-                        <outlet property="animableLayoutPupilLeft" destination="x4R-b2-9Av" id="vhA-W3-nTg"/>
-                        <outlet property="animableLayoutPupilRight" destination="Yse-em-Ekg" id="2fq-l7-IR2"/>
+                        <outlet property="animatableLayoutMouthPart0" destination="qW4-Kg-Pdy" id="Nxo-Gq-bjh"/>
+                        <outlet property="animatableLayoutMouthPart1" destination="qcg-DB-XMz" id="PwQ-kf-rYM"/>
+                        <outlet property="animatableLayoutMouthPart2" destination="z2c-aR-xL5" id="jvB-qp-uDf"/>
+                        <outlet property="animatableLayoutMouthPart3" destination="XhD-nB-Q4I" id="Gz7-F5-Wfx"/>
+                        <outlet property="animatableLayoutPupilLeft" destination="x4R-b2-9Av" id="vhA-W3-nTg"/>
+                        <outlet property="animatableLayoutPupilRight" destination="Yse-em-Ekg" id="2fq-l7-IR2"/>
                         <outlet property="flexLayout" destination="6KP-A8-483" id="NQT-Rq-mAV"/>
                         <outlet property="swipeableView" destination="UPU-9h-M9n" id="Hru-ig-qvh"/>
                     </connections>
@@ -1579,12 +1579,8 @@ Swipe  right/left</string>
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mnk-Ce-kZW" customClass="SwipeableView" customModule="SwipeableView" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="504" width="375" height="163"/>
-                                <color key="backgroundColor" red="0.85961114900000002" green="0.85961114900000002" blue="0.85961114900000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="AhQ-e0-hSV">
-                                <rect key="frame" x="20" y="64" width="335" height="290"/>
+                                <rect key="frame" x="20" y="64" width="335" height="387.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="J4e-74-H4i">
                                         <rect key="frame" x="0.0" y="0.0" width="335" height="31"/>
@@ -1606,7 +1602,7 @@ Swipe  right/left</string>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="DtJ-q6-BQh">
                                         <rect key="frame" x="0.0" y="36" width="335" height="20.5"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Expand Percentage: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gHi-eK-z4E">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Expand Percentage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gHi-eK-z4E">
                                                 <rect key="frame" x="0.0" y="0.0" width="295.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -1645,17 +1641,28 @@ Swipe  right/left</string>
                                             <action selector="onIndicatorPositionChanged:" destination="fHs-SV-pMP" eventType="valueChanged" id="Ijl-qB-aT9"/>
                                         </connections>
                                     </segmentedControl>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Aw7-yd-4Iv">
-                                        <rect key="frame" x="0.0" y="129" width="335" height="1"/>
-                                        <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="1" id="OtJ-eN-rgI"/>
-                                        </constraints>
-                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe indicator colors" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DYl-3d-FyX">
+                                        <rect key="frame" x="0.0" y="129" width="335" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="c6k-Uj-9NR">
+                                        <rect key="frame" x="0.0" y="154.5" width="335" height="32"/>
+                                        <segments>
+                                            <segment title="Default"/>
+                                            <segment title="Combo 1"/>
+                                            <segment title="Combo 2"/>
+                                            <segment title="Combo 3"/>
+                                        </segments>
+                                        <connections>
+                                            <action selector="onIndicatorColorsChanged:" destination="fHs-SV-pMP" eventType="valueChanged" id="Vhf-SK-VcS"/>
+                                        </connections>
+                                    </segmentedControl>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="SnJ-5C-8vB">
-                                        <rect key="frame" x="0.0" y="135" width="335" height="31"/>
+                                        <rect key="frame" x="0.0" y="190.5" width="335" height="31"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Indicator visible: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ka0-DJ-gUw">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Indicator visible" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ka0-DJ-gUw">
                                                 <rect key="frame" x="0.0" y="0.0" width="276" height="31"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -1670,9 +1677,9 @@ Swipe  right/left</string>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="hbF-6M-Wnc">
-                                        <rect key="frame" x="0.0" y="171" width="335" height="31"/>
+                                        <rect key="frame" x="0.0" y="226.5" width="335" height="31"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Hide indicator when expanded: " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tcW-bc-A5e">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Hide indicator when expanded" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tcW-bc-A5e">
                                                 <rect key="frame" x="0.0" y="0.0" width="274" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -1689,15 +1696,39 @@ Swipe  right/left</string>
                                             </switch>
                                         </subviews>
                                     </stackView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Aw7-yd-4Iv">
+                                        <rect key="frame" x="0.0" y="262.5" width="335" height="1"/>
+                                        <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="OtJ-eN-rgI"/>
+                                        </constraints>
+                                    </view>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="OMR-uj-P2G">
+                                        <rect key="frame" x="0.0" y="268.5" width="335" height="31"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Use rounded corners" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Wa-cT-sVG">
+                                                <rect key="frame" x="0.0" y="0.0" width="276" height="31"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OdR-LR-e7T">
+                                                <rect key="frame" x="286" y="0.0" width="51" height="31"/>
+                                                <connections>
+                                                    <action selector="onShowRoundedCornersChanged:" destination="fHs-SV-pMP" eventType="valueChanged" id="zKP-ro-Xwj"/>
+                                                </connections>
+                                            </switch>
+                                        </subviews>
+                                    </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mcx-po-ofz">
-                                        <rect key="frame" x="0.0" y="207" width="335" height="1"/>
+                                        <rect key="frame" x="0.0" y="304.5" width="335" height="1"/>
                                         <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="xLQ-EH-Rap"/>
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="tu2-Fl-1lq">
-                                        <rect key="frame" x="0.0" y="213" width="335" height="31"/>
+                                        <rect key="frame" x="0.0" y="310.5" width="335" height="31"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Plug child view controller" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VSR-Af-FZg">
                                                 <rect key="frame" x="0.0" y="0.0" width="276" height="31"/>
@@ -1714,7 +1745,7 @@ Swipe  right/left</string>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ldU-pQ-fpU">
-                                        <rect key="frame" x="0.0" y="249" width="335" height="41"/>
+                                        <rect key="frame" x="0.0" y="346.5" width="335" height="41"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Child view interaction only when expanded" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZdM-gc-A2e">
                                                 <rect key="frame" x="0.0" y="0.0" width="274" height="41"/>
@@ -1735,8 +1766,13 @@ Swipe  right/left</string>
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eIp-cw-jUY">
-                                <rect key="frame" x="90" y="464.5" width="195.5" height="35.5"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mnk-Ce-kZW" customClass="SwipeableView" customModule="SwipeableView" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="508" width="375" height="159"/>
+                                <color key="backgroundColor" red="0.85961114900000002" green="0.85961114900000002" blue="0.85961114900000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eIp-cw-jUY">
+                                <rect key="frame" x="90" y="468.5" width="195.5" height="35.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Swipe up/down">
                                         <attributes>
@@ -1751,7 +1787,7 @@ Swipe  right/left</string>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="Mnk-Ce-kZW" firstAttribute="bottom" secondItem="3id-RT-apt" secondAttribute="bottom" id="DG8-3w-VNt"/>
-                            <constraint firstItem="Mnk-Ce-kZW" firstAttribute="top" secondItem="AhQ-e0-hSV" secondAttribute="bottom" constant="150" id="HNc-vV-MqS"/>
+                            <constraint firstItem="Mnk-Ce-kZW" firstAttribute="top" secondItem="AhQ-e0-hSV" secondAttribute="centerY" constant="250" id="HNc-vV-MqS"/>
                             <constraint firstItem="3id-RT-apt" firstAttribute="trailing" secondItem="AhQ-e0-hSV" secondAttribute="trailing" constant="20" id="KTv-df-GZY"/>
                             <constraint firstItem="Mnk-Ce-kZW" firstAttribute="top" secondItem="eIp-cw-jUY" secondAttribute="bottom" constant="4" id="POG-V5-ecd"/>
                             <constraint firstItem="Mnk-Ce-kZW" firstAttribute="trailing" secondItem="3id-RT-apt" secondAttribute="trailing" id="YVU-Iw-3w9"/>

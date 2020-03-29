@@ -26,8 +26,8 @@
 
 import UIKit
 
-/// Protocol at which an item should conforms to, in order to be animable along with the SwipeableView
-protocol SwipeableAnimableItem : class {
+/// Protocol at which an item should conforms to, in order to be interpolated/animated along with the SwipeableView
+protocol SwipeableItem : class {
     
     /// Indicates if this item should keep being considered during the animations or should be removed.
     ///
@@ -35,12 +35,12 @@ protocol SwipeableAnimableItem : class {
     /// then this getter can return false and the SwipeableView will consequently prune it away
     var isValid:Bool { get }
     
-    /// applies the necessary changes to the animable properties based on the expanded/collapsed state
+    /// applies the necessary changes to the animatable properties based on the expanded/collapsed state
     ///
-    /// - Parameter expanded: configures the animable component as expanded or collapsed
+    /// - Parameter expanded: configures the animatable component as expanded or collapsed
     func set(expanded: Bool)
     
-    /// Changes the animable item applying the provided percentage, relative to the lower/upper bounds values
+    /// Changes the animatable item applying the provided percentage, relative to the lower/upper bounds values
     /// - Parameter percentage: the percentge to be applied (from 0.0 to 1.0)
     ///
     /// - percentage 0.0 is the lower bound value
@@ -48,7 +48,7 @@ protocol SwipeableAnimableItem : class {
     func set(percentage:CGFloat)
 }
 
-extension SwipeableAnimableItem {
+extension SwipeableItem {
     
     /// Returns the float value from the provided percentage relative to the two start/end bounds
     /// - Parameters:
@@ -69,7 +69,7 @@ extension SwipeableAnimableItem {
     
 }
 
-class SwipeableAnimableTransformation: SwipeableAnimableItem {
+class SwipeableItemTransformation: SwipeableItem {
     
     /// The weak reference to the actual view
     weak private(set) var view:UIView? = nil
@@ -179,8 +179,8 @@ class SwipeableAnimableTransformation: SwipeableAnimableItem {
     
 }
 
-/// Representation of an animable view cenrer in the context of the swipeable child view
-class SwipeableAnimableCenter: SwipeableAnimableItem {
+/// Representation of an animatable view cenrer in the context of the swipeable child view
+class SwipeableItemCenter: SwipeableItem {
     
     /// The weak reference to the actual view
     weak private(set) var view:UIView? = nil
@@ -226,8 +226,8 @@ class SwipeableAnimableCenter: SwipeableAnimableItem {
     
 }
 
-/// Representation of an animable view color in the context of the swipeable child view
-class SwipeableAnimableColor: SwipeableAnimableItem {
+/// Representation of an animatable view color in the context of the swipeable child view
+class SwipeableItemColor: SwipeableItem {
 
     /// The weak reference to the actual view
     weak private(set) var view:UIView? = nil
@@ -326,8 +326,8 @@ class SwipeableAnimableColor: SwipeableAnimableItem {
 
 }
 
-/// Representation of an animable view alph channel in the context of the swipeable child view
-class SwipeableAnimableAlpha: SwipeableAnimableItem {
+/// Representation of an animatable view alph channel in the context of the swipeable child view
+class SwipeableItemAlpha: SwipeableItem {
     
     /// The weak reference to the actual view
     weak private(set) var view:UIView? = nil
@@ -369,8 +369,8 @@ class SwipeableAnimableAlpha: SwipeableAnimableItem {
     
 }
     
-/// Representation of an animable layout constraint in the context of the swipeable child view
-class SwipeableAnimableLayout: SwipeableAnimableItem {
+/// Representation of an animatable layout constraint in the context of the swipeable child view
+class SwipeableItemLayout: SwipeableItem {
     
     //MARK: Properties
     

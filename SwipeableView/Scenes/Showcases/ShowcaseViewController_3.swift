@@ -31,13 +31,13 @@ class ShowcaseViewController_3: UIViewController {
     @IBOutlet weak var swipeableView: SwipeableView!
     @IBOutlet weak var flexLayout: NSLayoutConstraint!
     
-    @IBOutlet weak var animableLayoutPupilLeft: NSLayoutConstraint!
-    @IBOutlet weak var animableLayoutPupilRight: NSLayoutConstraint!
+    @IBOutlet weak var animatableLayoutPupilLeft: NSLayoutConstraint!
+    @IBOutlet weak var animatableLayoutPupilRight: NSLayoutConstraint!
     
-    @IBOutlet weak var animableLayoutMouthPart0: NSLayoutConstraint!
-    @IBOutlet weak var animableLayoutMouthPart1: NSLayoutConstraint!
-    @IBOutlet weak var animableLayoutMouthPart2: NSLayoutConstraint!
-    @IBOutlet weak var animableLayoutMouthPart3: NSLayoutConstraint!
+    @IBOutlet weak var animatableLayoutMouthPart0: NSLayoutConstraint!
+    @IBOutlet weak var animatableLayoutMouthPart1: NSLayoutConstraint!
+    @IBOutlet weak var animatableLayoutMouthPart2: NSLayoutConstraint!
+    @IBOutlet weak var animatableLayoutMouthPart3: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,18 +47,18 @@ class ShowcaseViewController_3: UIViewController {
         self.swipeableView.flexibleLayout = .init(with: flexLayout, end: flexLayout.constant * 2)
         
         // this will animate the "pupils"
-        let pupilsEnd = (animableLayoutPupilLeft.firstItem as? UIView)?.frame.height ?? 40
-        self.swipeableView.addAnimableItem(SwipeableAnimableLayout(with: animableLayoutPupilLeft, end: pupilsEnd))
-        self.swipeableView.addAnimableItem(SwipeableAnimableLayout(with: animableLayoutPupilRight, end: pupilsEnd))
+        let pupilsEnd = (animatableLayoutPupilLeft.firstItem as? UIView)?.frame.height ?? 40
+        self.swipeableView.addAnimatableItem(SwipeableItemLayout(with: animatableLayoutPupilLeft, end: pupilsEnd))
+        self.swipeableView.addAnimatableItem(SwipeableItemLayout(with: animatableLayoutPupilRight, end: pupilsEnd))
         
         // this will animate the layouts for the "mouth" :)
-        self.swipeableView.addAnimableItem(SwipeableAnimableLayout(with: animableLayoutMouthPart0,
+        self.swipeableView.addAnimatableItem(SwipeableItemLayout(with: animatableLayoutMouthPart0,
         end: -20))
-        self.swipeableView.addAnimableItem(SwipeableAnimableLayout(with: animableLayoutMouthPart1,
+        self.swipeableView.addAnimatableItem(SwipeableItemLayout(with: animatableLayoutMouthPart1,
         end: -10))
-        self.swipeableView.addAnimableItem(SwipeableAnimableLayout(with: animableLayoutMouthPart2,
+        self.swipeableView.addAnimatableItem(SwipeableItemLayout(with: animatableLayoutMouthPart2,
         end: -10))
-        self.swipeableView.addAnimableItem(SwipeableAnimableLayout(with: animableLayoutMouthPart3,
+        self.swipeableView.addAnimatableItem(SwipeableItemLayout(with: animatableLayoutMouthPart3,
         end: -20))
         
     }

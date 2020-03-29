@@ -46,7 +46,7 @@ class SampleChildViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.swipeView?.addAnimableItem(SwipeableAnimableLayout(with: sampleExtraLayout2,end: 180))
+        self.swipeView?.addAnimatableItem(SwipeableItemLayout(with: sampleExtraLayout2,end: 180))
         self.tableView.reloadData()
     }
     

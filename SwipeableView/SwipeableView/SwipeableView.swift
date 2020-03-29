@@ -59,7 +59,7 @@ class SwipeableView: UIView {
     }
     
     /// The swipeable child view representation of the external layout which will be affected by the expanding / collapsing of this view
-    var flexibleLayout: SwipeableAnimableLayout = .init()
+    var flexibleLayout: SwipeableItemLayout = .init()
     
     /// If set to true, the pan gesture on the view will be inverted, affecting the `flexibleLayout` in the
     /// opposite direction of the current axis
@@ -70,6 +70,16 @@ class SwipeableView: UIView {
         didSet{
             guard self.isSwipeIndicatorVisible != oldValue else { return }
             self.showSwipeEdgeView(self.isSwipeIndicatorVisible)
+        }
+    }
+    
+    /// Set/Get the visibility of the rounded corners to this view.
+    ///
+    /// If `true`, the rounded corners are shown according with the current `indicatorPosition`
+    var hasRoundedCorners:Bool = true {
+        didSet {
+            guard self.hasRoundedCorners != oldValue else { return }
+            self.setupRoundedCorners()
         }
     }
     
@@ -89,6 +99,10 @@ class SwipeableView: UIView {
     }
     
     /// Get/Set the swipe indicator view position for this SwipeableView
+    ///
+    /// When this property changes, if the `hasRoundedCorners` is `true`, then also the corner edges will be
+    /// updated as well, according with the new `indicatorPosition` value
+    ///
     var indicatorPosition: SwipeableView.IndicatorPosition = .top {
         didSet{
             // keep the reference to any existing child view container
@@ -98,14 +112,19 @@ class SwipeableView: UIView {
             self.setupSwipeEdgeView()
             // apply back the existing child view container, based on the new swipe edge
             self.setupChildViewContainer(currentChildViewContainer)
+            // update the rounded corners if needed
+            self.setupRoundedCorners()
         }
     }
     
+    /// The default edge view indicator colors
+    static let defaultIndicatorColors:(UIColor,UIColor) = (UIColor(white: 0.95, alpha: 1.0), .lightGray)
+    
     /// Get/set the color for the indicator edge view and the bar color within the indicator view (as tuple)
-    var indicatorColor:(UIColor,UIColor) = (UIColor(white: 0.95, alpha: 1.0), .lightGray){
+    var indicatorColors:(UIColor,UIColor) = SwipeableView.defaultIndicatorColors {
         didSet{
-            self.swipeEdgeView?.backgroundColor = self.indicatorColor.0
-            self.swipeEdgeBarView?.backgroundColor = self.indicatorColor.1
+            self.swipeEdgeView?.backgroundColor = self.indicatorColors.0
+            self.swipeEdgeBarView?.backgroundColor = self.indicatorColors.1
         }
     }
     
@@ -129,8 +148,8 @@ class SwipeableView: UIView {
     /// The default component animation duration
     private let animDuration:TimeInterval = 0.5
     
-    /// List of extra animable items which are animated along with the expand/collapse of this view
-    private var animableItems: [SwipeableAnimableItem] = []
+    /// List of extra animatable items which are animated along with the expand/collapse of this view
+    private var animatableItems: [SwipeableItem] = []
     
     /// the swipe view which practically allows the user to swipe the view from collapsted to fullscreen
     private weak var swipeEdgeView:UIView?
@@ -202,18 +221,18 @@ class SwipeableView: UIView {
         self.expand(expand, wasExpanded: self.isExpanded, animated: animated)
     }
     
-    /// Adds the provided animable item to the list of animable items
-    /// - Parameter item: the animable item to be added
-    func addAnimableItem(_ item:SwipeableAnimableItem) {
-        // update the just added animable item to the right percentage
+    /// Adds the provided animatable item to the list of animatable items
+    /// - Parameter item: the animatable item to be added
+    func addAnimatableItem(_ item:SwipeableItem) {
+        // update the just added animatable item to the right percentage
         item.set(percentage: self.currentPercentage)
-        // add to the animable itemss
-        self.animableItems.append(item)
+        // add to the animatable itemss
+        self.animatableItems.append(item)
     }
     
-    /// Removes all the animable items from the list of animable items
-    func removeAllAnimableItem() {
-        self.animableItems.removeAll()
+    /// Removes all the animatable items from the list of animatable items
+    func removeAllanimatableItem() {
+        self.animatableItems.removeAll()
     }
     
     //MARK: Private
@@ -262,7 +281,7 @@ extension SwipeableView {
             // expand/collapse this Swipeable view
             self.flexibleLayout.set(expanded: expand)
             // prepare for expand/collapse all extra layouts
-            self.expandExtraAnimableItems(expand)
+            self.expandAnimatableItems(expand)
             // notify the delegate
             if expand {
                 self.delegate?.swipeableViewDidExpand(swipeableView: self, previousState: wasExpanded)
@@ -278,12 +297,12 @@ extension SwipeableView {
         } else if !expand {
             self.showSwipeEdgeView(self.isSwipeIndicatorVisible)
         }
-        // animate the flexible layout and the extra animable items
+        // animate the flexible layout and the extra animatable items
         self.animate(animations: {
             // expand/collapse the flexible layout, in order to affect this SwipeableView
             self.flexibleLayout.set(expanded: expand)
-            // expand/collapse the animable items accordingly
-            self.expandExtraAnimableItems(expand)
+            // expand/collapse the animatable items accordingly
+            self.expandAnimatableItems(expand)
         }) { [weak self] (_) in
             guard let self = self else { return }
             // notify the delegate
@@ -313,21 +332,21 @@ extension SwipeableView {
         })
     }
     
-    /// This method toggle the extra animable items, from the start to end or vice versa
+    /// This method toggle the extra animatable items, from the start to end or vice versa
     /// - Parameter expand: if true constant will go from start to end, otherise from end to start
-    private func expandExtraAnimableItems(_ expand:Bool) {
-        // prunes all the extra animable items which are flagged as no longer valid
-        self.animableItems.removeAll(where: { $0.isValid == false })
-        guard !self.animableItems.isEmpty else { return }
-        self.animableItems.forEach { $0.set(expanded: expand) }
+    private func expandAnimatableItems(_ expand:Bool) {
+        // prunes all the extra animatable items which are flagged as no longer valid
+        self.animatableItems.removeAll(where: { $0.isValid == false })
+        guard !self.animatableItems.isEmpty else { return }
+        self.animatableItems.forEach { $0.set(expanded: expand) }
     }
     
-    /// This method applies the provided relative percentage to all the extra animable items
-    /// - Parameter percentage: the percentge to be applied to all the extra animable items
-    private func expandExtraAnimableItems(withPercentage percentage:CGFloat ){
-        guard !self.animableItems.isEmpty else { return }
+    /// This method applies the provided relative percentage to all the extra animatable items
+    /// - Parameter percentage: the percentge to be applied to all the extra animatable items
+    private func expandAnimatableItems(withPercentage percentage:CGFloat ){
+        guard !self.animatableItems.isEmpty else { return }
         guard percentage >= 0.0 else { return }
-        self.animableItems.forEach { $0.set(percentage: percentage) }
+        self.animatableItems.forEach { $0.set(percentage: percentage) }
     }
 }
 
@@ -350,8 +369,8 @@ extension SwipeableView {
             
             let newPercentage = self.flexibleLayout.percentage
             
-            // apply the relative change to all the extra animable items
-            self.expandExtraAnimableItems(withPercentage: newPercentage)
+            // apply the relative change to all the extra animatable items
+            self.expandAnimatableItems(withPercentage: newPercentage)
             
             // notify the delegate about the pan change if needed
             if newPercentage != self.currentPercentage {
@@ -383,9 +402,19 @@ extension SwipeableView {
     /// Setup the layout and ui for the entire swipeable view
     private func setup() {
         self.clipsToBounds = true
+        self.setupRoundedCorners()
         self.setupSwipeEdgeView()
         self.setupChildViewContainer()
         self.setupPanGesture()
+    }
+    
+    /// Setup/Updates the corner radius of this view based on the `indicatorPosition` property
+    private func setupRoundedCorners(){
+        guard self.hasRoundedCorners else {
+            self.layer.cornerRadius = 0.0
+            return
+        }
+        self.indicatorPosition.applyCornerRadius(to: self, radius: self.swipeViewThickness / 2)
     }
     
     /// Setup the layout and ui for swipe edge view
@@ -394,7 +423,7 @@ extension SwipeableView {
         // setup the swipe view layout and ui
         let swipeEdgeView = UIView()
         swipeEdgeView.clipsToBounds = true
-        swipeEdgeView.backgroundColor = self.indicatorColor.0
+        swipeEdgeView.backgroundColor = self.indicatorColors.0
         swipeEdgeView.alpha = self.isSwipeIndicatorVisible ? (self.isExpanded && self.hideIndicatorWhenExpanded ? 0.0 : 1 ) : 0.0
         self.addSubview(swipeEdgeView)
         
@@ -404,7 +433,7 @@ extension SwipeableView {
         
         // setup the swipe indicator view layout and ui
         let swipeIndicatorView = UIView()
-        swipeIndicatorView.backgroundColor = self.indicatorColor.1
+        swipeIndicatorView.backgroundColor = self.indicatorColors.1
         swipeIndicatorView.translatesAutoresizingMaskIntoConstraints = false
         swipeIndicatorView.layer.cornerRadius = swipeEdgeBarViewSize.height / 2
         swipeEdgeView.addSubview(swipeIndicatorView)
@@ -453,6 +482,25 @@ extension SwipeableView {
         case bottom
         case left
         case right
+        
+        /// Applies the corner radius to the provided view, with the given radius, accordinb
+        /// with this indicator position
+        /// - Parameters:
+        ///   - view: the view at which the corner radius need to be applied
+        ///   - radius: the radius to be used for the corners
+        fileprivate func applyCornerRadius(to view:UIView, radius:CGFloat) {
+            view.layer.cornerRadius = radius
+            switch self {
+            case .top:
+                view.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
+            case .bottom:
+                view.layer.maskedCorners = [.layerMinXMaxYCorner,.layerMaxXMaxYCorner]
+            case .left:
+                view.layer.maskedCorners = [.layerMinXMinYCorner,.layerMinXMaxYCorner]
+            case .right:
+                view.layer.maskedCorners = [.layerMaxXMinYCorner,.layerMaxXMaxYCorner]
+            }
+        }
         
         /// Applies the layout to the swipe edge view, based on this indicator position
         /// - Parameters:

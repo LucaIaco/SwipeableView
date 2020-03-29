@@ -51,8 +51,8 @@ class ShowcaseViewController_6: UIViewController {
                     view.backgroundColor = view.tintColor
                     view.tintColor = col1
                 }
-                self.swipeableView.addAnimableItem(SwipeableAnimableColor(backgroundColorForView: view, end:view.tintColor) )
-                self.swipeableView.addAnimableItem(SwipeableAnimableColor(tintColorForView: view, end: view.backgroundColor) )
+                self.swipeableView.addAnimatableItem(SwipeableItemColor(backgroundColorForView: view, end:view.tintColor) )
+                self.swipeableView.addAnimatableItem(SwipeableItemColor(tintColorForView: view, end: view.backgroundColor) )
             }
         }
         

@@ -44,11 +44,11 @@ class ShowcaseViewController_7: UIViewController {
         
         self.squareBorderViews.forEach { (v) in
             let angle:CGFloat = ([9,7,3,1].contains(v.tag) ? .pi/4 : .pi) * (v.tag.isMultiple(of: 2) ? -1 : 1)
-            self.swipeableView.addAnimableItem(SwipeableAnimableTransformation(rotating: v, endAngle: angle))
+            self.swipeableView.addAnimatableItem(SwipeableItemTransformation(rotating: v, endAngle: angle))
             let scale:CGFloat = ([9,7,3,1].contains(v.tag) ? 0.3 : 0.5)
-            self.swipeableView.addAnimableItem(SwipeableAnimableTransformation(scaling: v, endScale: scale))
+            self.swipeableView.addAnimatableItem(SwipeableItemTransformation(scaling: v, endScale: scale))
         }
-        self.swipeableView.addAnimableItem(SwipeableAnimableTransformation(scaling: squareCoreView, endScale: 1.5))   
+        self.swipeableView.addAnimatableItem(SwipeableItemTransformation(scaling: squareCoreView, endScale: 1.5))   
     }
     
 }
