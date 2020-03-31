@@ -33,7 +33,8 @@ Here the code for the case 2 (where the flexible layout will the actual height c
     
 override func viewDidLoad() {
   super.viewDidLoad()
-  // Indicates the SwipeableView that the gesture should be considered inverted. This fit this case, where we want the 
+  // Indicates the SwipeableView that the gesture should be considered inverted. This fit this case, where we want the flexLayout to move from
+  // his current value, not to 0 like case 1, but instead to the double of his current value
   self.swipeableView.isPanGestureInverted = true
   // Set the flexible layout to the SwipeableView. This will let the layout constant value change from his current value to his double
   self.swipeView.flexibleLayout = SwipeableItemLayout(with: self.flexLayout, end: self.flexLayout.constant * 2)
