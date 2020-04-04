@@ -27,9 +27,6 @@ xcuserdata
 *.hmap
 *.ipa
 
-# gif files
-*.gif
-
 ## Dependency Managers
 Pods/
 Carthage/Build
