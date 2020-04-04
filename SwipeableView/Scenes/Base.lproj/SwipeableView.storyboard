@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="C1h-vC-HTZ">
-    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -13,14 +14,14 @@
             <objects>
                 <viewController id="Oe6-Ps-rxJ" customClass="ShowcaseHomeViewController" customModule="SwipeableView" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="E7O-1s-Zel">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zmK-G1-wtq" customClass="SwipeableView" customModule="SwipeableView" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44" width="375" height="250"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="250"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xmU-rk-QyY">
-                                        <rect key="frame" x="20" y="50" width="335" height="146"/>
+                                        <rect key="frame" x="20" y="50" width="374" height="146"/>
                                         <attributedString key="attributedText">
                                             <fragment content="This project provides some use cases where the SwipeableView component can be applied  ">
                                                 <attributes>
@@ -40,7 +41,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pPx-e7-mD4">
-                                        <rect key="frame" x="20" y="192.5" width="335" height="57.5"/>
+                                        <rect key="frame" x="20" y="221" width="374" height="29"/>
                                         <attributedString key="attributedText">
                                             <fragment content="Select one of the showcases below ">
                                                 <attributes>
@@ -65,14 +66,14 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IPy-ZI-qkS">
-                                <rect key="frame" x="0.0" y="302" width="375" height="365"/>
+                                <rect key="frame" x="0.0" y="346" width="414" height="516"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellId" id="kw6-x8-m0s">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kw6-x8-m0s" id="tI4-pf-LV8">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -111,6 +112,7 @@
                         <segue destination="Anx-Vn-e7h" kind="show" identifier="segueShowcase5" id="Jla-uU-Lf2"/>
                         <segue destination="hIt-4L-O2L" kind="show" identifier="segueShowcase6" id="ahX-Te-sQo"/>
                         <segue destination="Rut-gb-3X9" kind="show" identifier="segueShowcase7" id="oOg-I0-HBS"/>
+                        <segue destination="fMK-vQ-uiP" kind="show" identifier="segueShowcase8" id="npW-aE-ZAy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qJh-c4-WMx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -122,14 +124,14 @@
             <objects>
                 <viewController id="cLI-Er-wQX" customClass="ShowcaseViewController_4" customModule="SwipeableView" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sGM-9O-UAt">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pii-QR-qQq" customClass="SwipeableView" customModule="SwipeableView" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="467" width="375" height="200"/>
+                                <rect key="frame" x="0.0" y="696" width="414" height="200"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OXa-Og-em2">
-                                        <rect key="frame" x="20" y="82.5" width="335" height="35"/>
+                                        <rect key="frame" x="20" y="82.5" width="374" height="35"/>
                                         <attributedString key="attributedText">
                                             <fragment content="Swipe up/down">
                                                 <attributes>
@@ -151,11 +153,11 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DW5-Vj-C5Z">
-                                <rect key="frame" x="67.5" y="74" width="240" height="240"/>
+                                <rect key="frame" x="87" y="118" width="240" height="240"/>
                                 <color key="backgroundColor" red="0.94254810897982821" green="1" blue="0.84631684899549786" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="8fA-4D-uWD">
-                                <rect key="frame" x="67.5" y="74" width="240" height="240"/>
+                                <rect key="frame" x="87" y="118" width="240" height="240"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="5PM-De-S4b">
                                         <rect key="frame" x="0.0" y="0.0" width="240" height="40"/>
@@ -395,7 +397,7 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u1B-Sd-0E5">
-                                <rect key="frame" x="145.5" y="324" width="84.5" height="40.5"/>
+                                <rect key="frame" x="165" y="368" width="84.5" height="40.5"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Hello!">
                                         <attributes>
@@ -433,21 +435,21 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G34-wI-efA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2450.7246376811595" y="-1460.4910714285713"/>
+            <point key="canvasLocation" x="2495" y="-1460"/>
         </scene>
         <!--Showcase View Controller5-->
         <scene sceneID="7zh-bV-KRB">
             <objects>
                 <viewController id="Anx-Vn-e7h" customClass="ShowcaseViewController_5" customModule="SwipeableView" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hz6-uW-wkV">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Fh-l5-qfj" customClass="SwipeableView" customModule="SwipeableView" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="467" width="375" height="200"/>
+                                <rect key="frame" x="0.0" y="696" width="414" height="200"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EuN-94-onP">
-                                        <rect key="frame" x="20" y="82.5" width="335" height="35"/>
+                                        <rect key="frame" x="20" y="82.5" width="374" height="35"/>
                                         <attributedString key="attributedText">
                                             <fragment content="Swipe up/down">
                                                 <attributes>
@@ -499,7 +501,7 @@
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ebi-6K-atQ">
-                                <rect key="frame" x="167.5" y="144" width="40" height="40"/>
+                                <rect key="frame" x="187" y="188" width="40" height="40"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="BNJ-N5-nZe"/>
@@ -575,14 +577,14 @@
             <objects>
                 <viewController id="hIt-4L-O2L" customClass="ShowcaseViewController_6" customModule="SwipeableView" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="R9P-NA-F5f">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mHx-p9-Bj9" customClass="SwipeableView" customModule="SwipeableView" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="467" width="375" height="200"/>
+                                <rect key="frame" x="0.0" y="696" width="414" height="200"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iyt-Ea-3D8">
-                                        <rect key="frame" x="8" y="60.5" width="359" height="79"/>
+                                        <rect key="frame" x="8" y="60.5" width="398" height="79"/>
                                         <attributedString key="attributedText">
                                             <fragment>
                                                 <string key="content">Swipe up/down
@@ -642,7 +644,7 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="qHh-82-M8v">
-                                <rect key="frame" x="42.5" y="74" width="290" height="290"/>
+                                <rect key="frame" x="62" y="118" width="290" height="290"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="NjX-KJ-3dp">
                                         <rect key="frame" x="0.0" y="0.0" width="290" height="40"/>
@@ -1057,14 +1059,14 @@
             <objects>
                 <viewController id="Rut-gb-3X9" customClass="ShowcaseViewController_7" customModule="SwipeableView" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ftU-AI-pmO">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wTB-GX-PAq" customClass="SwipeableView" customModule="SwipeableView" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="467" width="375" height="200"/>
+                                <rect key="frame" x="0.0" y="696" width="414" height="200"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xvJ-3c-Whc">
-                                        <rect key="frame" x="8" y="60.5" width="359" height="79"/>
+                                        <rect key="frame" x="8" y="60.5" width="398" height="79"/>
                                         <attributedString key="attributedText">
                                             <fragment>
                                                 <string key="content">Swipe up/down
@@ -1123,7 +1125,7 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="yRa-lb-L4E">
-                                <rect key="frame" x="52.5" y="74" width="270" height="270"/>
+                                <rect key="frame" x="72" y="118" width="270" height="270"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tzv-J8-jJP">
                                         <rect key="frame" x="0.0" y="0.0" width="270" height="90"/>
@@ -1255,14 +1257,14 @@
             <objects>
                 <viewController id="gml-ec-6Cg" customClass="ShowcaseViewController_3" customModule="SwipeableView" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fyf-v0-usU">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UPU-9h-M9n" customClass="SwipeableView" customModule="SwipeableView" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="467" width="375" height="200"/>
+                                <rect key="frame" x="0.0" y="696" width="414" height="200"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="94y-rj-0EV">
-                                        <rect key="frame" x="20" y="85.5" width="335" height="29"/>
+                                        <rect key="frame" x="20" y="85.5" width="374" height="29"/>
                                         <attributedString key="attributedText">
                                             <fragment content="Swipe up/down">
                                                 <attributes>
@@ -1284,52 +1286,52 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q71-01-d63">
-                                <rect key="frame" x="131.5" y="207.5" width="112.5" height="112.5"/>
+                                <rect key="frame" x="145" y="420" width="124" height="124.5"/>
                                 <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Q71-01-d63" secondAttribute="height" multiplier="1:1" id="jWF-qt-NiY"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZUs-yV-ycj">
-                                <rect key="frame" x="248" y="117" width="86.5" height="86.5"/>
+                                <rect key="frame" x="273" y="320.5" width="95.5" height="95.5"/>
                                 <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="ZUs-yV-ycj" secondAttribute="height" multiplier="1:1" id="WSI-XL-NGf"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CWy-zV-EFg">
-                                <rect key="frame" x="40.5" y="117" width="87" height="86.5"/>
+                                <rect key="frame" x="45.5" y="320.5" width="95.5" height="95.5"/>
                                 <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fcc-sH-eww">
-                                <rect key="frame" x="94.5" y="121" width="29" height="29"/>
+                                <rect key="frame" x="105" y="324.5" width="32" height="32"/>
                                 <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="fcc-sH-eww" secondAttribute="height" multiplier="1:1" id="aji-Jw-tWg"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UMK-kS-YPb">
-                                <rect key="frame" x="301.5" y="121" width="29" height="29"/>
+                                <rect key="frame" x="333" y="324.5" width="31.5" height="32"/>
                                 <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YYj-pT-cY6">
-                                <rect key="frame" x="164" y="360" width="47" height="47"/>
+                                <rect key="frame" x="181" y="584.5" width="52" height="51.5"/>
                                 <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D7G-aF-ryf">
-                                <rect key="frame" x="211" y="360" width="47" height="47"/>
+                                <rect key="frame" x="233" y="584.5" width="51.5" height="51.5"/>
                                 <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6TN-48-ZS4">
-                                <rect key="frame" x="117" y="360" width="47" height="47"/>
+                                <rect key="frame" x="129.5" y="584.5" width="51.5" height="51.5"/>
                                 <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qgb-0k-MG9">
-                                <rect key="frame" x="70.5" y="360" width="46.5" height="47"/>
+                                <rect key="frame" x="77.5" y="584.5" width="52" height="51.5"/>
                                 <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3aS-0d-bzq">
-                                <rect key="frame" x="258" y="360" width="46.5" height="47"/>
+                                <rect key="frame" x="284.5" y="584.5" width="52" height="51.5"/>
                                 <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                         </subviews>
@@ -1400,14 +1402,14 @@
             <objects>
                 <viewController id="5rM-nb-Pqa" customClass="ShowcaseViewController_2" customModule="SwipeableView" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7nZ-as-JEx">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bzU-Io-G9B" customClass="SwipeableView" customModule="SwipeableView" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44" width="375" height="150"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="150"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cjW-cX-rwF">
-                                        <rect key="frame" x="20" y="51.5" width="335" height="47"/>
+                                        <rect key="frame" x="20" y="51.5" width="374" height="47"/>
                                         <attributedString key="attributedText">
                                             <fragment content="(.bottom)">
                                                 <attributes>
@@ -1438,10 +1440,10 @@ Swipe down/up</string>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cZS-5E-Gf9" customClass="SwipeableView" customModule="SwipeableView" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="517" width="375" height="150"/>
+                                <rect key="frame" x="0.0" y="746" width="414" height="150"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TVq-6V-Mc0">
-                                        <rect key="frame" x="20" y="50.5" width="335" height="49"/>
+                                        <rect key="frame" x="20" y="50.5" width="374" height="49"/>
                                         <attributedString key="attributedText">
                                             <fragment content="Swipe up/down ">
                                                 <attributes>
@@ -1470,10 +1472,10 @@ Swipe down/up</string>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aqM-XD-SOO" customClass="SwipeableView" customModule="SwipeableView" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="202" width="120" height="307"/>
+                                <rect key="frame" x="0.0" y="246" width="120" height="492"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ut-WN-GT1">
-                                        <rect key="frame" x="10" y="119.5" width="75" height="68.5"/>
+                                        <rect key="frame" x="10" y="212" width="75" height="68.5"/>
                                         <attributedString key="attributedText">
                                             <fragment content="(.right)">
                                                 <attributes>
@@ -1504,10 +1506,10 @@ Swipe  left/right</string>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MzT-K6-HQy" customClass="SwipeableView" customModule="SwipeableView" customModuleProvider="target">
-                                <rect key="frame" x="255" y="202" width="120" height="307"/>
+                                <rect key="frame" x="294" y="246" width="120" height="492"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ral-gO-ByI">
-                                        <rect key="frame" x="31" y="119.5" width="79" height="68.5"/>
+                                        <rect key="frame" x="31" y="212" width="79" height="68.5"/>
                                         <attributedString key="attributedText">
                                             <fragment content="(.left)">
                                                 <attributes>
@@ -1576,23 +1578,23 @@ Swipe  right/left</string>
             <objects>
                 <viewController id="fHs-SV-pMP" customClass="ShowcaseViewController_1" customModule="SwipeableView" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Zoc-SC-HVe">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="AhQ-e0-hSV">
-                                <rect key="frame" x="20" y="64" width="335" height="387.5"/>
+                                <rect key="frame" x="20" y="108" width="374" height="387.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="J4e-74-H4i">
-                                        <rect key="frame" x="0.0" y="0.0" width="335" height="31"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="31"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Expanded state" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J00-07-Dr7">
-                                                <rect key="frame" x="0.0" y="0.0" width="276" height="31"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="315" height="31"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="aiC-UD-0K9">
-                                                <rect key="frame" x="286" y="0.0" width="51" height="31"/>
+                                                <rect key="frame" x="325" y="0.0" width="51" height="31"/>
                                                 <connections>
                                                     <action selector="onExpandStateChanged:" destination="fHs-SV-pMP" eventType="valueChanged" id="2qa-fw-lrc"/>
                                                 </connections>
@@ -1600,16 +1602,16 @@ Swipe  right/left</string>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="DtJ-q6-BQh">
-                                        <rect key="frame" x="0.0" y="36" width="335" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="36" width="374" height="20.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Expand Percentage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gHi-eK-z4E">
-                                                <rect key="frame" x="0.0" y="0.0" width="295.5" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="334.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 %" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Say-uP-3LT">
-                                                <rect key="frame" x="305.5" y="0.0" width="29.5" height="20.5"/>
+                                                <rect key="frame" x="344.5" y="0.0" width="29.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -1617,20 +1619,20 @@ Swipe  right/left</string>
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZSI-fE-qud">
-                                        <rect key="frame" x="0.0" y="61.5" width="335" height="1"/>
+                                        <rect key="frame" x="0.0" y="61.5" width="374" height="1"/>
                                         <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="Ef7-hM-6zk"/>
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe indicator position" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ahj-Lt-NeV">
-                                        <rect key="frame" x="0.0" y="67.5" width="335" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="67.5" width="374" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Qu0-DZ-HyV">
-                                        <rect key="frame" x="0.0" y="93" width="335" height="32"/>
+                                        <rect key="frame" x="0.0" y="93" width="374" height="32"/>
                                         <segments>
                                             <segment title="Top"/>
                                             <segment title="Bottom"/>
@@ -1642,13 +1644,13 @@ Swipe  right/left</string>
                                         </connections>
                                     </segmentedControl>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe indicator colors" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DYl-3d-FyX">
-                                        <rect key="frame" x="0.0" y="129" width="335" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="129" width="374" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="c6k-Uj-9NR">
-                                        <rect key="frame" x="0.0" y="154.5" width="335" height="32"/>
+                                        <rect key="frame" x="0.0" y="154.5" width="374" height="32"/>
                                         <segments>
                                             <segment title="Default"/>
                                             <segment title="Combo 1"/>
@@ -1660,16 +1662,16 @@ Swipe  right/left</string>
                                         </connections>
                                     </segmentedControl>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="SnJ-5C-8vB">
-                                        <rect key="frame" x="0.0" y="190.5" width="335" height="31"/>
+                                        <rect key="frame" x="0.0" y="190.5" width="374" height="31"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Indicator visible" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ka0-DJ-gUw">
-                                                <rect key="frame" x="0.0" y="0.0" width="276" height="31"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="315" height="31"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6DD-LZ-w03">
-                                                <rect key="frame" x="286" y="0.0" width="51" height="31"/>
+                                                <rect key="frame" x="325" y="0.0" width="51" height="31"/>
                                                 <connections>
                                                     <action selector="onIndicatorVisibilityChanged:" destination="fHs-SV-pMP" eventType="valueChanged" id="oES-QO-Jxx"/>
                                                 </connections>
@@ -1677,16 +1679,16 @@ Swipe  right/left</string>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="hbF-6M-Wnc">
-                                        <rect key="frame" x="0.0" y="226.5" width="335" height="31"/>
+                                        <rect key="frame" x="0.0" y="226.5" width="374" height="31"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Hide indicator when expanded" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tcW-bc-A5e">
-                                                <rect key="frame" x="0.0" y="0.0" width="274" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="313" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="pOO-CQ-91r">
-                                                <rect key="frame" x="284" y="0.0" width="53" height="31"/>
+                                                <rect key="frame" x="323" y="0.0" width="53" height="31"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="51" id="T0m-C7-ssl"/>
                                                 </constraints>
@@ -1697,23 +1699,23 @@ Swipe  right/left</string>
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Aw7-yd-4Iv">
-                                        <rect key="frame" x="0.0" y="262.5" width="335" height="1"/>
+                                        <rect key="frame" x="0.0" y="262.5" width="374" height="1"/>
                                         <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="OtJ-eN-rgI"/>
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="OMR-uj-P2G">
-                                        <rect key="frame" x="0.0" y="268.5" width="335" height="31"/>
+                                        <rect key="frame" x="0.0" y="268.5" width="374" height="31"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Use rounded corners" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Wa-cT-sVG">
-                                                <rect key="frame" x="0.0" y="0.0" width="276" height="31"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="315" height="31"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OdR-LR-e7T">
-                                                <rect key="frame" x="286" y="0.0" width="51" height="31"/>
+                                                <rect key="frame" x="325" y="0.0" width="51" height="31"/>
                                                 <connections>
                                                     <action selector="onShowRoundedCornersChanged:" destination="fHs-SV-pMP" eventType="valueChanged" id="zKP-ro-Xwj"/>
                                                 </connections>
@@ -1721,23 +1723,23 @@ Swipe  right/left</string>
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mcx-po-ofz">
-                                        <rect key="frame" x="0.0" y="304.5" width="335" height="1"/>
+                                        <rect key="frame" x="0.0" y="304.5" width="374" height="1"/>
                                         <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="xLQ-EH-Rap"/>
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="tu2-Fl-1lq">
-                                        <rect key="frame" x="0.0" y="310.5" width="335" height="31"/>
+                                        <rect key="frame" x="0.0" y="310.5" width="374" height="31"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Plug child view controller" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VSR-Af-FZg">
-                                                <rect key="frame" x="0.0" y="0.0" width="276" height="31"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="315" height="31"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="vFB-r9-2aB">
-                                                <rect key="frame" x="286" y="0.0" width="51" height="31"/>
+                                                <rect key="frame" x="325" y="0.0" width="51" height="31"/>
                                                 <connections>
                                                     <action selector="onPlugChildViewChanged:" destination="fHs-SV-pMP" eventType="valueChanged" id="x6N-6l-44D"/>
                                                 </connections>
@@ -1745,16 +1747,16 @@ Swipe  right/left</string>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ldU-pQ-fpU">
-                                        <rect key="frame" x="0.0" y="346.5" width="335" height="41"/>
+                                        <rect key="frame" x="0.0" y="346.5" width="374" height="41"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Child view interaction only when expanded" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZdM-gc-A2e">
-                                                <rect key="frame" x="0.0" y="0.0" width="274" height="41"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="313" height="41"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BR9-vO-d7g">
-                                                <rect key="frame" x="284" y="0.0" width="53" height="31"/>
+                                                <rect key="frame" x="323" y="0.0" width="53" height="31"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="51" id="hdT-20-UGh"/>
                                                 </constraints>
@@ -1767,11 +1769,11 @@ Swipe  right/left</string>
                                 </subviews>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mnk-Ce-kZW" customClass="SwipeableView" customModule="SwipeableView" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="508" width="375" height="159"/>
+                                <rect key="frame" x="0.0" y="552" width="414" height="310"/>
                                 <color key="backgroundColor" red="0.85961114900000002" green="0.85961114900000002" blue="0.85961114900000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eIp-cw-jUY">
-                                <rect key="frame" x="90" y="468.5" width="195.5" height="35.5"/>
+                                <rect key="frame" x="109.5" y="512.5" width="195.5" height="35.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Swipe up/down">
@@ -1815,7 +1817,7 @@ Swipe  right/left</string>
             <objects>
                 <navigationController id="C1h-vC-HTZ" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Mod-Lj-Org">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -1831,18 +1833,18 @@ Swipe  right/left</string>
             <objects>
                 <viewController storyboardIdentifier="child_Id1" id="y1T-xr-LZD" customClass="SampleChildViewController" customModule="SwipeableView" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4wo-qm-bCx">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qtX-vO-f0b">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellId" id="WPl-09-yyl">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WPl-09-yyl" id="IVC-0z-ude">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -1853,7 +1855,7 @@ Swipe  right/left</string>
                                 </connections>
                             </tableView>
                             <button opaque="NO" alpha="0.90000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ef-gp-SfU">
-                                <rect key="frame" x="62.5" y="623" width="250" height="44"/>
+                                <rect key="frame" x="82" y="818" width="250" height="44"/>
                                 <color key="backgroundColor" red="0.94254810899999997" green="1" blue="0.84631684900000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="sCb-es-RRQ"/>
@@ -1884,6 +1886,169 @@ Swipe  right/left</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZEB-ok-t4c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-946" y="-2056"/>
+        </scene>
+        <!--Showcase View Controller8-->
+        <scene sceneID="sK2-ha-o5J">
+            <objects>
+                <viewController id="fMK-vQ-uiP" customClass="ShowcaseViewController_8" customModule="SwipeableView" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="muT-8K-GDz">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vsJ-wY-84p" customClass="SwipeableView" customModule="SwipeableView" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="696" width="414" height="200"/>
+                                <color key="backgroundColor" red="0.85961114900000002" green="0.85961114900000002" blue="0.85961114900000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="fbr-Nc-CiF"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🍌" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gg1-Du-jbm">
+                                <rect key="frame" x="178" y="188" width="58" height="64.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="54"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🍌" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S3U-oa-rFl">
+                                <rect key="frame" x="70" y="288" width="58" height="64.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="54"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🍌" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EMM-Uq-lTq">
+                                <rect key="frame" x="286" y="288" width="58" height="64.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="54"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JpW-h4-b8a">
+                                <rect key="frame" x="149.5" y="653" width="115" height="35"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Swipe up">
+                                        <attributes>
+                                            <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" metaFont="system" size="29"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Gg1-Du-jbm" firstAttribute="leading" secondItem="S3U-oa-rFl" secondAttribute="trailing" priority="750" constant="50" id="0eO-2q-IxU"/>
+                            <constraint firstItem="AAz-ww-Iqj" firstAttribute="trailing" secondItem="vsJ-wY-84p" secondAttribute="trailing" id="3PN-W1-Arf"/>
+                            <constraint firstItem="Gg1-Du-jbm" firstAttribute="top" secondItem="AAz-ww-Iqj" secondAttribute="top" constant="100" id="6A9-1G-qHZ"/>
+                            <constraint firstItem="JpW-h4-b8a" firstAttribute="centerX" secondItem="muT-8K-GDz" secondAttribute="centerX" id="6Qq-kr-yvK"/>
+                            <constraint firstAttribute="bottom" secondItem="vsJ-wY-84p" secondAttribute="bottom" id="6XA-BE-IrD"/>
+                            <constraint firstItem="vsJ-wY-84p" firstAttribute="leading" secondItem="muT-8K-GDz" secondAttribute="leading" id="WIg-74-Ybg"/>
+                            <constraint firstItem="S3U-oa-rFl" firstAttribute="top" secondItem="Gg1-Du-jbm" secondAttribute="top" constant="100" id="YI9-Dh-P7O"/>
+                            <constraint firstItem="EMM-Uq-lTq" firstAttribute="leading" secondItem="Gg1-Du-jbm" secondAttribute="trailing" priority="750" constant="50" id="ak6-Z4-XoD"/>
+                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="EMM-Uq-lTq" secondAttribute="trailing" priority="750" id="fJt-dR-p3G"/>
+                            <constraint firstItem="vsJ-wY-84p" firstAttribute="top" secondItem="JpW-h4-b8a" secondAttribute="bottom" constant="8" id="gH2-Fl-Unp"/>
+                            <constraint firstItem="Gg1-Du-jbm" firstAttribute="centerX" secondItem="muT-8K-GDz" secondAttribute="centerX" id="gLs-u0-va9"/>
+                            <constraint firstItem="EMM-Uq-lTq" firstAttribute="top" secondItem="Gg1-Du-jbm" secondAttribute="top" constant="100" id="xS8-3w-He6"/>
+                            <constraint firstItem="S3U-oa-rFl" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="muT-8K-GDz" secondAttribute="leadingMargin" priority="750" id="zhn-Om-sdM"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="AAz-ww-Iqj"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="uGP-Ff-hfA"/>
+                    <connections>
+                        <outlet property="flexLayout" destination="fbr-Nc-CiF" id="mRm-mh-guT"/>
+                        <outlet property="lblCoa" destination="EMM-Uq-lTq" id="Lx0-4N-3Fz"/>
+                        <outlet property="lblRace" destination="S3U-oa-rFl" id="bhU-eB-qda"/>
+                        <outlet property="lblSwipeUp" destination="JpW-h4-b8a" id="oQ3-GS-Xab"/>
+                        <outlet property="lblWeapon" destination="Gg1-Du-jbm" id="UPU-Gg-GA6"/>
+                        <outlet property="leftcenterContraint" destination="YI9-Dh-P7O" id="E4s-jz-1oS"/>
+                        <outlet property="rightcenterConstraint" destination="xS8-3w-He6" id="OVr-Yf-Fxo"/>
+                        <outlet property="swipeableView" destination="vsJ-wY-84p" id="cLO-0l-MNE"/>
+                        <outlet property="topLabelsConstraint" destination="6A9-1G-qHZ" id="IaY-QN-lfG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VXR-Xx-r4z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2493.5999999999999" y="-734.48275862068976"/>
+        </scene>
+        <!--Showcase Child View Controller8-->
+        <scene sceneID="xds-g7-cyX">
+            <objects>
+                <viewController storyboardIdentifier="child_Id8" id="YYy-mb-ugJ" customClass="ShowcaseChildViewController_8" customModule="SwipeableView" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9tX-Er-Wy4">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Wwc-tj-ueU">
+                                <rect key="frame" x="16" y="64" width="382" height="32"/>
+                                <segments>
+                                    <segment title="Race"/>
+                                    <segment title="Weapon"/>
+                                    <segment title="Coat of arms"/>
+                                </segments>
+                                <color key="selectedSegmentTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="onCategoryChanged:" destination="YYy-mb-ugJ" eventType="valueChanged" id="4gh-53-gA5"/>
+                                </connections>
+                            </segmentedControl>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" prefetchingEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IXI-Iq-ZYy">
+                                <rect key="frame" x="16" y="120" width="382" height="776"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="5l8-t6-pb9">
+                                    <size key="itemSize" width="80" height="80"/>
+                                    <size key="estimatedItemSize" width="80" height="80"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="characterCellID" id="c6H-pM-7k9" customClass="CharacterCell" customModule="SwipeableView" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="cKb-dN-mGk">
+                                            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🍌" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8i5-Yh-Zum">
+                                                    <rect key="frame" x="14" y="11.5" width="52" height="57.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="48"/>
+                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="8i5-Yh-Zum" firstAttribute="centerY" secondItem="cKb-dN-mGk" secondAttribute="centerY" id="4p2-a5-Wig"/>
+                                                <constraint firstItem="8i5-Yh-Zum" firstAttribute="centerX" secondItem="cKb-dN-mGk" secondAttribute="centerX" id="xqX-xh-bFl"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <connections>
+                                            <outlet property="charLabel" destination="8i5-Yh-Zum" id="Xhi-sn-imA"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="YYy-mb-ugJ" id="6Kk-wh-WpP"/>
+                                    <outlet property="delegate" destination="YYy-mb-ugJ" id="OJE-tl-sSP"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Wwc-tj-ueU" firstAttribute="top" secondItem="PNB-iX-l6b" secondAttribute="top" constant="20" id="5T6-OY-U9A"/>
+                            <constraint firstItem="IXI-Iq-ZYy" firstAttribute="bottom" secondItem="9tX-Er-Wy4" secondAttribute="bottom" priority="750" id="Bto-IA-xcJ"/>
+                            <constraint firstItem="IXI-Iq-ZYy" firstAttribute="top" secondItem="Wwc-tj-ueU" secondAttribute="bottom" constant="25" id="GEd-Rc-lXx"/>
+                            <constraint firstItem="IXI-Iq-ZYy" firstAttribute="leading" secondItem="PNB-iX-l6b" secondAttribute="leading" priority="750" constant="16" id="Vmc-Tl-FX5"/>
+                            <constraint firstItem="PNB-iX-l6b" firstAttribute="trailing" secondItem="IXI-Iq-ZYy" secondAttribute="trailing" priority="750" constant="16" id="mzb-ZK-nKx"/>
+                            <constraint firstItem="Wwc-tj-ueU" firstAttribute="leading" secondItem="PNB-iX-l6b" secondAttribute="leading" priority="750" constant="16" id="ncQ-UN-4K9"/>
+                            <constraint firstItem="PNB-iX-l6b" firstAttribute="trailing" secondItem="Wwc-tj-ueU" secondAttribute="trailing" priority="750" constant="16" id="x1y-ha-1w6"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="PNB-iX-l6b"/>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="IXI-Iq-ZYy" id="NDZ-RP-RlC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wop-3F-dgf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2493.5999999999999" y="-0.44977511244377816"/>
         </scene>
     </scenes>
 </document>

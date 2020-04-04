@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		B509FAB2242BCFDA0037E79E /* ShowcaseViewController_4.swift in Sources */ = {isa = PBXBuildFile; fileRef = B509FAB1242BCFDA0037E79E /* ShowcaseViewController_4.swift */; };
 		B515C6ED242D203500EDC90F /* ShowcaseViewController_5.swift in Sources */ = {isa = PBXBuildFile; fileRef = B515C6EC242D203500EDC90F /* ShowcaseViewController_5.swift */; };
+		B5766D2824389D4F0000DEAD /* ShowcaseViewController_8.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5766D2724389D4F0000DEAD /* ShowcaseViewController_8.swift */; };
+		B5766D2C2438A4910000DEAD /* ShowcaseChildViewController_8.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5766D2B2438A4910000DEAD /* ShowcaseChildViewController_8.swift */; };
 		B58F60E2242D3D100078BABC /* ShowcaseViewController_6.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58F60E1242D3D100078BABC /* ShowcaseViewController_6.swift */; };
 		B59F2156242FAF6700D48461 /* ShowcaseViewController_7.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59F2155242FAF6700D48461 /* ShowcaseViewController_7.swift */; };
 		B5D964FB24280FC0003CFC05 /* ShowcaseViewController_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D964FA24280FC0003CFC05 /* ShowcaseViewController_1.swift */; };
@@ -27,6 +29,8 @@
 /* Begin PBXFileReference section */
 		B509FAB1242BCFDA0037E79E /* ShowcaseViewController_4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowcaseViewController_4.swift; sourceTree = "<group>"; };
 		B515C6EC242D203500EDC90F /* ShowcaseViewController_5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowcaseViewController_5.swift; sourceTree = "<group>"; };
+		B5766D2724389D4F0000DEAD /* ShowcaseViewController_8.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowcaseViewController_8.swift; sourceTree = "<group>"; };
+		B5766D2B2438A4910000DEAD /* ShowcaseChildViewController_8.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowcaseChildViewController_8.swift; sourceTree = "<group>"; };
 		B58F60E1242D3D100078BABC /* ShowcaseViewController_6.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowcaseViewController_6.swift; sourceTree = "<group>"; };
 		B59F2155242FAF6700D48461 /* ShowcaseViewController_7.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowcaseViewController_7.swift; sourceTree = "<group>"; };
 		B5D964FA24280FC0003CFC05 /* ShowcaseViewController_1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowcaseViewController_1.swift; sourceTree = "<group>"; };
@@ -64,16 +68,35 @@
 			path = SwipeableView;
 			sourceTree = "<group>";
 		};
-		B59F2159242FB43D00D48461 /* Showcases */ = {
+		B5766D292438A43D0000DEAD /* Showcase1 */ = {
 			isa = PBXGroup;
 			children = (
 				B5D964FA24280FC0003CFC05 /* ShowcaseViewController_1.swift */,
+				B5FB398C240EEE1000A0B742 /* SampleChildViewController.swift */,
+			);
+			path = Showcase1;
+			sourceTree = "<group>";
+		};
+		B5766D2A2438A4530000DEAD /* Showcase8 */ = {
+			isa = PBXGroup;
+			children = (
+				B5766D2724389D4F0000DEAD /* ShowcaseViewController_8.swift */,
+				B5766D2B2438A4910000DEAD /* ShowcaseChildViewController_8.swift */,
+			);
+			path = Showcase8;
+			sourceTree = "<group>";
+		};
+		B59F2159242FB43D00D48461 /* Showcases */ = {
+			isa = PBXGroup;
+			children = (
+				B5766D292438A43D0000DEAD /* Showcase1 */,
 				B5E82BD4242909A200BDA942 /* ShowcaseViewController_2.swift */,
 				B5E82BD62429295700BDA942 /* ShowcaseViewController_3.swift */,
 				B509FAB1242BCFDA0037E79E /* ShowcaseViewController_4.swift */,
 				B515C6EC242D203500EDC90F /* ShowcaseViewController_5.swift */,
 				B58F60E1242D3D100078BABC /* ShowcaseViewController_6.swift */,
 				B59F2155242FAF6700D48461 /* ShowcaseViewController_7.swift */,
+				B5766D2A2438A4530000DEAD /* Showcase8 */,
 			);
 			path = Showcases;
 			sourceTree = "<group>";
@@ -83,7 +106,6 @@
 			children = (
 				B5FB3965240E49DF00A0B742 /* SwipeableView.storyboard */,
 				B5E8D09F2427B16F00BFE84E /* ShowcaseHomeViewController.swift */,
-				B5FB398C240EEE1000A0B742 /* SampleChildViewController.swift */,
 				B59F2159242FB43D00D48461 /* Showcases */,
 			);
 			path = Scenes;
@@ -195,6 +217,8 @@
 				B5D964FB24280FC0003CFC05 /* ShowcaseViewController_1.swift in Sources */,
 				B5FB398D240EEE1000A0B742 /* SampleChildViewController.swift in Sources */,
 				B509FAB2242BCFDA0037E79E /* ShowcaseViewController_4.swift in Sources */,
+				B5766D2824389D4F0000DEAD /* ShowcaseViewController_8.swift in Sources */,
+				B5766D2C2438A4910000DEAD /* ShowcaseChildViewController_8.swift in Sources */,
 				B515C6ED242D203500EDC90F /* ShowcaseViewController_5.swift in Sources */,
 				B5FB3985240E66C800A0B742 /* SwipeableView.swift in Sources */,
 				B5FB398B240EDDC100A0B742 /* SwipeableItems.swift in Sources */,

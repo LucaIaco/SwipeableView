@@ -41,11 +41,12 @@ class ShowcaseHomeViewController: UIViewController {
     private let showCases:[ShowCase] = [
         ShowCase(title: "Basic configurations", segueId: "segueShowcase1"),
         ShowCase(title: "Indicator positions", segueId: "segueShowcase2"),
-        ShowCase(title: "Item: Layout", segueId: "segueShowcase3"),
+        ShowCase(title: "Animatable Item: Layout", segueId: "segueShowcase3"),
         ShowCase(title: "Animatable Item: Alpha channel", segueId: "segueShowcase4"),
         ShowCase(title: "Animatable Item: View.center", segueId: "segueShowcase5"),
         ShowCase(title: "Animatable Item: UIColor", segueId: "segueShowcase6"),
-        ShowCase(title: "Animatable Item: Scale / Rotate", segueId: "segueShowcase7")
+        ShowCase(title: "Animatable Item: Scale / Rotate", segueId: "segueShowcase7"),
+        ShowCase(title: "Sample: Character picker", segueId: "segueShowcase8")
     ]
 
     //MARK: View lifecylce
