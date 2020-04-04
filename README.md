@@ -1,5 +1,13 @@
 # SwipeableView
-A simple and easy to use view component which allows to be expanded and collapsed with user gestures relying on autolayouts, and supports interpolation of items which can be animated along with it, such as UIView alpha channel, background/tint colors, center, affine transform and other constraint layouts
+
+<table>
+    <tr>
+        <td>A simple and easy to use view component which allows to be expanded and collapsed with user gestures relying on autolayouts. It supports interpolation of items which can be animated along with it, such as UIView alpha channel, background/tint colors, center, affine transform and other constraint layouts</td>
+    </tr>
+    <tr>
+        <td style="text-align:center"><img src="images/intro.gif"/></td>
+    </tr>
+</table>
 
 ## Setup
 
