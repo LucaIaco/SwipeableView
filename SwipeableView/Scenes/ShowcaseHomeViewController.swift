@@ -45,7 +45,7 @@ class ShowcaseHomeViewController: UIViewController {
         ShowCase(title: "Animatable Item: Alpha channel", segueId: "segueShowcase4"),
         ShowCase(title: "Animatable Item: View.center", segueId: "segueShowcase5"),
         ShowCase(title: "Animatable Item: UIColor", segueId: "segueShowcase6"),
-        ShowCase(title: "Animatable Item: Scale / Rotate", segueId: "segueShowcase7"),
+        ShowCase(title: "Animatable Item: Transform", segueId: "segueShowcase7"),
         ShowCase(title: "Sample: Character picker", segueId: "segueShowcase8")
     ]
 
@@ -62,7 +62,7 @@ class ShowcaseHomeViewController: UIViewController {
         // add extra animatable item which need to be interpolated along with the expand/collapse
         self.swipeableView.addAnimatableItem(SwipeableItemLayout(with: topLabelText1Layout, end: -200))
         self.swipeableView.addAnimatableItem(SwipeableItemAlpha(with: labelText1))
-        self.swipeableView.addAnimatableItem(SwipeableItemTransformation(scaling: labelText1))
+        self.swipeableView.addAnimatableItem(SwipeableItemTransform(scaling: labelText1))
         self.swipeableView.addAnimatableItem(SwipeableItemLayout(with: bottomLabelText2Layout, end: 40.0))
         self.swipeableView.addAnimatableItem(SwipeableItemAlpha(with: labelText2, end: 1.0))
         self.showCasesTableView.alpha = 0

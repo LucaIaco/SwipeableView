@@ -97,13 +97,13 @@ class ShowcaseViewController_8: UIViewController {
         self.swipeableView.addAnimatableItem(SwipeableItemLayout(with: self.leftcenterContraint))
         self.swipeableView.addAnimatableItem(SwipeableItemLayout(with: self.rightcenterConstraint))
         // plug transform animable items (scaling)
-        self.swipeableView.addAnimatableItem(SwipeableItemTransformation(scaling: self.lblRace, endScale: 1.7))
-        self.swipeableView.addAnimatableItem(SwipeableItemTransformation(scaling: self.lblWeapon, endScale: 1.7))
-        self.swipeableView.addAnimatableItem(SwipeableItemTransformation(scaling: self.lblCoa, endScale: 1.7))
+        self.swipeableView.addAnimatableItem(SwipeableItemTransform(scaling: self.lblRace, endScale: 1.7))
+        self.swipeableView.addAnimatableItem(SwipeableItemTransform(scaling: self.lblWeapon, endScale: 1.7))
+        self.swipeableView.addAnimatableItem(SwipeableItemTransform(scaling: self.lblCoa, endScale: 1.7))
         // plug transform animable items (rotating)
-        self.swipeableView.addAnimatableItem(SwipeableItemTransformation(rotating: self.lblRace, endAngle: CGFloat.pi * 2))
-        self.swipeableView.addAnimatableItem(SwipeableItemTransformation(rotating: self.lblWeapon, endAngle: CGFloat.pi * 2))
-        self.swipeableView.addAnimatableItem(SwipeableItemTransformation(rotating: self.lblCoa, endAngle: CGFloat.pi * 2))
+        self.swipeableView.addAnimatableItem(SwipeableItemTransform(rotating: self.lblRace, endAngle: CGFloat.pi * 2))
+        self.swipeableView.addAnimatableItem(SwipeableItemTransform(rotating: self.lblWeapon, endAngle: CGFloat.pi * 2))
+        self.swipeableView.addAnimatableItem(SwipeableItemTransform(rotating: self.lblCoa, endAngle: CGFloat.pi * 2))
     }
 
 }

@@ -69,21 +69,26 @@ extension SwipeableItem {
     
 }
 
-class SwipeableItemTransformation: SwipeableItem {
+class SwipeableItemTransform: SwipeableItem {
     
     /// The weak reference to the actual view
     weak private(set) var view:UIView? = nil
     
     /// The transform value to be associated to the SwipeableView state `collapsed`
     private var start:CGFloat = 0.0
-    
     /// The transform value to be associated to the SwipeableView state `expanded`
     private var end:CGFloat = 0.0
+    
+    /// The initial transform ( used only for the `transformType` 2 )
+    private var startT:CGAffineTransform = .identity
+    /// The end transform ( used only for the `transformType` 2 )
+    private var endT:CGAffineTransform = .identity
     
     /// indicates which type of transtormation this component is performing
     ///
     /// - if 0 then is a rotation transformation
     /// - if 1 then is a scaling transformation
+    /// - if 2 then is a generic transformation
     private var transformType = 0
     
     /// Returns the transformation angle from the current view
@@ -107,6 +112,8 @@ class SwipeableItemTransformation: SwipeableItem {
             v.transform = self.transform(withAngle: (expanded ? self.end : self.start))
         case 1:
             v.transform = self.transform(withScale: (expanded ? self.end : self.start))
+        case 2:
+            v.transform = expanded ? self.endT : self.startT
         default:
             break
         }
@@ -120,6 +127,14 @@ class SwipeableItemTransformation: SwipeableItem {
             v.transform = self.transform(withAngle: val)
         case 1:
             v.transform = self.transform(withScale: val)
+        case 2:
+            guard let tx = self.value(forPercentage: percentage, start: startT.tx, end: endT.tx) else { return }
+            guard let ty = self.value(forPercentage: percentage, start: startT.ty, end: endT.ty) else { return }
+            guard let a = self.value(forPercentage: percentage, start: startT.a, end: endT.a) else { return }
+            guard let b = self.value(forPercentage: percentage, start: startT.b, end: endT.b) else { return }
+            guard let c = self.value(forPercentage: percentage, start: startT.c, end: endT.c) else { return }
+            guard let d = self.value(forPercentage: percentage, start: startT.d, end: endT.d) else { return }
+            v.transform = CGAffineTransform(a: a, b: b, c: c, d: d, tx: tx, ty: ty)
         default:
             break
         }
@@ -148,14 +163,14 @@ class SwipeableItemTransformation: SwipeableItem {
     //MARK: Initializers
     
     /// Initialises the object with the provided view of which rotation angle need to be animated
-    /// - Parameter view: the view to refer in order to animate his alpha channel
+    /// - Parameter view: the view to refer in order to animate the rotation transform part
     /// - Parameter startAngle: the start/initial angle to be associated to the SwipeableView state `collapsed`
     /// - Parameter endAngle: the end/destination angle to be associated to the SwipeableView state `expanded`
     ///
     /// - If `start` is not provided, 0 will be used instead
     /// - If `end` is not provided, π will be used instead
     ///
-    init(rotating view:UIView, startAngle:CGFloat? = nil, endAngle:CGFloat? = nil){
+    init(rotating view:UIView, startAngle:CGFloat? = nil, endAngle:CGFloat? = nil) {
         self.view = view
         self.start = startAngle ?? self.currentAngle
         self.end = endAngle ?? .pi
@@ -163,20 +178,31 @@ class SwipeableItemTransformation: SwipeableItem {
     }
     
     /// Initialises the object with the provided view of which scaling factor need to be animated
-    /// - Parameter view: the view to refer in order to animate his alpha channel
+    /// - Parameter view: the view to refer in order to animate the scale transform part
     /// - Parameter startScale: the start/initial scale factor to be associated to the SwipeableView state `collapsed`
     /// - Parameter endScale: the end/destination scale factor to be associated to the SwipeableView state `expanded`
     ///
     /// - If `start` is not provided, 0 will be used instead
     /// - If `end` is not provided, π will be used instead
     ///
-    init(scaling view:UIView, startScale:CGFloat? = nil, endScale:CGFloat? = nil){
+    init(scaling view:UIView, startScale:CGFloat? = nil, endScale:CGFloat? = nil) {
         self.view = view
         self.start = startScale ?? self.currentScale
         self.end = endScale ?? 0.5
         self.transformType = 1
     }
     
+    /// Initialises the object with the provided view of which generic transform need to be animated
+    /// - Parameters:
+    ///   - view: the view to refer in order to animate the transform
+    ///   - startTransform: the start/initial transfrom to be associated to the SwipeableView state `collapsed`
+    ///   - endTransform: the end/destination transfrom to be associated to the SwipeableView state `expanded`
+    init(view:UIView, startTransform:CGAffineTransform? = nil, endTransform:CGAffineTransform? = nil) {
+        self.view = view
+        self.startT = startTransform ?? view.transform
+        self.endT = endTransform ?? .identity
+        self.transformType = 2
+    }
 }
 
 /// Representation of an animatable view cenrer in the context of the swipeable child view
@@ -295,7 +321,7 @@ class SwipeableItemColor: SwipeableItem {
     //MARK: Initializers
 
     /// Initialises the object with the provided view of which background color need to be animated
-    /// - Parameter view: the view to refer in order to animate his alpha channel
+    /// - Parameter view: the view to refer in order to animate his background color
     /// - Parameter start: the start/initial background color to be associated to the SwipeableView state `collapsed`
     /// - Parameter end: the end/destination background color to be associated to the SwipeableView state `expanded`
     ///
@@ -310,7 +336,7 @@ class SwipeableItemColor: SwipeableItem {
     }
 
     /// Initialises the object with the provided view of which tint color need to be animated
-    /// - Parameter view: the view to refer in order to animate his alpha channel
+    /// - Parameter view: the view to refer in order to animate his tint color
     /// - Parameter start: the start/initial tint color to be associated to the SwipeableView state `collapsed`
     /// - Parameter end: the end/destination tint color to be associated to the SwipeableView state `expanded`
     ///

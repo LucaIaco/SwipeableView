@@ -149,7 +149,7 @@ class SwipeableView: UIView {
     private let animDuration:TimeInterval = 0.5
     
     /// List of extra animatable items which are animated along with the expand/collapse of this view
-    private var animatableItems: [SwipeableItem] = []
+    private(set) var animatableItems: [SwipeableItem] = []
     
     /// the swipe view which practically allows the user to swipe the view from collapsted to fullscreen
     private weak var swipeEdgeView:UIView?
@@ -226,12 +226,12 @@ class SwipeableView: UIView {
     func addAnimatableItem(_ item:SwipeableItem) {
         // update the just added animatable item to the right percentage
         item.set(percentage: self.currentPercentage)
-        // add to the animatable itemss
+        // add to the animatable items
         self.animatableItems.append(item)
     }
     
     /// Removes all the animatable items from the list of animatable items
-    func removeAllanimatableItem() {
+    func removeAllanimatableItems() {
         self.animatableItems.removeAll()
     }
     
