@@ -87,3 +87,15 @@ The SwipeableView comes along with a small set of configurable parameters and fe
 * returning the current expanding/collapsing percentage
 
 Refer to the show case (1) (Basic configurations) in the project for the full example on those aspects
+
+## SwipeableItem
+
+The SwipeableItem is a protocol at which an object can conforms in order to be interpolated and animated, along with the SwipeableView. It comes already with a small set of SwipeableItem objects, which are:
+
+* `SwipeableItemLayout` : Representation of a layout constraint in the context of the swipeable view. Allows to animate and interpolate a layout constraint along with the SwipeableView
+* `SwipeableItemAlpha` : Representation of the view.alpha channel in the context of the swipeable view. Allows to animate and interpolate the view alpha channel along with the SwipeableView
+* `SwipeableItemColor` : Representation of the view color in the context of the swipeable view. Allows to animate and interpolate the view `backgroundColor` or `tintColor` along with the SwipeableView
+* `SwipeableItemCenter` : Representation of the view.center in the context of the swipeable view. Allows to animate and interpolate the view center along with the SwipeableView
+* `SwipeableItemTransform` : Representation of the view.transform in the context of the swipeable view. Allows to animate and interpolate the view.transfrom along with the SwipeableView over the `CGAffineTransform`
+
+You can go through the show cases in the sample project to see how they work individually and along with other SwipeableItem items
