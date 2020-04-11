@@ -85,6 +85,7 @@ The SwipeableView comes along with a small set of configurable parameters and fe
 * interaction with any child view controller based on the expanded or collapsed state
 * expand or collapse the SwipeableView programmatically
 * returning the current expanding/collapsing percentage
+* coordinating the Swipeable pan gesture along with an designated child view which is a subclass of `UIScrollView`, such as `UITableView` or `UICollectionView` (such coordinated scroll view can be detected automatically or assigned manually if needed)
 
 Refer to the show case (1) (Basic configurations) in the project for the full example on those aspects
 
