@@ -137,6 +137,40 @@ class SwipeableView: UIView {
         }
     }
     
+    /// Inidcates if the swipeable view should detect any child view which is subclass of UIScrollView.
+    ///
+    /// If true, it detects and keeps his weak reference in the property `coordinatedScrollView` as soon as
+    /// the user touch the SwipeableView and therefore invokes his hitTest(:) method
+    var autoDetectScrollViews:Bool = false
+    
+    /// Indicates if any referred `coordinatedScrollView` should have the scrolling coordinated along with
+    /// the swipeable view pan gesture recognizer.
+    ///
+    /// This features relies on the correct setup of the `indicatorPosition`, and can work with all 4 the positions.
+    ///
+    /// For example, a swipeable view which expands from bottom to top, should have the `indicatorPosition` set to
+    /// `.top` ( even if `isSwipeIndicatorVisible` is set to `false` )
+    var handleCoordinatedScrollView:Bool = false
+    
+    /// Weak reference to any scrollview (scrollview, table view, collection view,...) for which his scrolling via
+    /// pan gesture recognizer should be currently coordinated along with the SwipableView pan gesture recognizer.
+    /// The scrolling coordination will happen only if the property `handleCoordinatedScrollView` is set to `true`
+    ///
+    /// If `autoDetectScrollViews` is set to `true`, this property will be automatically set, if any scrollview
+    /// within the SwipeableView or his child views will be detected.
+    /// If `autoDetectScrollViews` is set to `false`, you can still set this property manually based on your needs
+    ///
+    weak var coordinatedScrollView:UIScrollView? {
+        didSet{
+            if oldValue != self.coordinatedScrollView {
+                oldValue?.panGestureRecognizer.removeTarget(self, action: #selector(handlePan(sender:)))
+                self.coordinatedScrollView?.panGestureRecognizer.addTarget(self, action: #selector(handlePan(sender:)))
+                self.coordScrollInitOffset = .zero
+                self.coordScrollInitiSize = .zero
+            }
+        }
+    }
+    
     /// The current swipe percentage from 0 to 1 (1 as expanded, 0 as collapsed)
     private(set) var currentPercentage:CGFloat = 0.0
     
@@ -171,6 +205,12 @@ class SwipeableView: UIView {
     
     /// The pan gesture recognizer used to swipe up and down the view
     private weak var panGesture:UIPanGestureRecognizer?
+    
+    /// The initial `coordinatedScrollView` contentOffset
+    private var coordScrollInitOffset:CGPoint = .zero
+    
+    /// The initial `coordinatedScrollView` contentSize (minus his size)
+    private var coordScrollInitiSize:CGSize = .zero
     
     //MARK: View lifecycle
     
@@ -356,12 +396,25 @@ extension SwipeableView {
     
     @objc private func handlePan(sender:UIPanGestureRecognizer){
         
+        // Prevent the handling of the pan gesture if coming from the coordinated scroll view and
+        // the handleCoordinatedScrollView is false
+        guard self.handleCoordinatedScrollView || sender != self.coordinatedScrollView?.panGestureRecognizer else {
+            return
+        }
+        
         guard let referredView = self.superview else { return }
         guard let flexLayout = self.flexibleLayout.layout else { return }
         
         switch sender.state {
+        case .began:
+            // If the sender gesture comes from the coordinated scrollview
+            if let scrollView = self.coordinatedScrollView, sender == scrollView.panGestureRecognizer {
+                self.coordScrollInitOffset = scrollView.contentOffset
+                self.coordScrollInitiSize = CGSize(width: scrollView.contentSize.width - scrollView.bounds.width,
+                                                 height: scrollView.contentSize.height - scrollView.bounds.height)
+            }
         case .changed:
-            let translation = sender.translation(in: referredView)
+            let translation = self.translation(for: sender, in: referredView)
             let newLayoutConstant = flexLayout.constant + (self.flexibleLayout.isVerticalAxis ? translation.y : translation.x) * (self.isPanGestureInverted ? -1 : 1)
             
             // apply the change to the layout
@@ -381,19 +434,110 @@ extension SwipeableView {
             self.currentPercentage = newPercentage
             
             // reset the translation if value was set was successful (therefore, the constant was in the range)
-            if didApply {
-                sender.setTranslation(.zero, in: referredView)
-            }
+            self.finalizeStateChanged(for: sender, didApply: didApply, referredView: referredView)
 
         case .ended, .cancelled:
+            // complete the expanding/collapsing transtion on state ended according with the percentage
             self.isExpanded = self.flexibleLayout.percentage >= 0.5
             sender.setTranslation(.zero, in: referredView)
+            // reset the coordinated scrollview initial offset anf content size on state ended in any case
+            self.coordScrollInitOffset = .zero
+            self.coordScrollInitiSize = .zero
         default:
             break
         }
-        
     }
     
+    /// Returns the translation offset on the provided gesture recognizer in the given view
+    ///
+    /// It handles the both the default SwipeableView pan gesture, and the coordinated scroll view if needed
+    /// - Parameters:
+    ///   - sender: the gesture recognizer
+    ///   - view: the referrred view
+    /// - Returns: the resulting translation offset to be applied
+    private func translation(for sender:UIPanGestureRecognizer,in view:UIView) -> CGPoint {
+        var translation = sender.translation(in: view)
+        if let scrollView = self.coordinatedScrollView, sender == scrollView.panGestureRecognizer {
+            if self.isExpanded {
+                switch self.indicatorPosition {
+                case .top:
+                    translation.y -= self.coordScrollInitOffset.y
+                case .bottom:
+                    translation.y += (self.coordScrollInitiSize.height - self.coordScrollInitOffset.y)
+                case .left:
+                    translation.x -= self.coordScrollInitOffset.x
+                case .right:
+                    translation.x += (self.coordScrollInitiSize.width - self.coordScrollInitOffset.x)
+                }
+            }
+            return translation
+        } else {
+            return translation
+        }
+    }
+    
+    /// Finalizes the gesture state changed iteration
+    /// - Parameters:
+    ///   - sender: the gesture recognizer
+    ///   - didApply: indicates if the flexibleLayout set was successful (meaning, if the value was in range)
+    ///   - referredView: the referred view to be considered with the gesture recognizer
+    private func finalizeStateChanged(for sender:UIPanGestureRecognizer, didApply:Bool, referredView:UIView) {
+        if didApply {
+            if let scrollView = self.coordinatedScrollView, sender == scrollView.panGestureRecognizer {
+                let cOff = scrollView.contentOffset
+                let cSize = CGSize(width: scrollView.contentSize.width - scrollView.bounds.width,
+                                     height: scrollView.contentSize.height - scrollView.bounds.height)
+                if self.isExpanded {
+                    switch self.indicatorPosition {
+                    case .top:
+                        scrollView.contentOffset = CGPoint(x: cOff.x, y: 0)
+                    case .bottom:
+                        scrollView.contentOffset = CGPoint(x: cOff.x, y: cSize.height)
+                    case .left:
+                        scrollView.contentOffset = CGPoint(x: 0, y: cOff.y)
+                    case .right:
+                        scrollView.contentOffset = CGPoint(x: cSize.width, y: cOff.y)
+                    }
+                }
+                if [.top,.left].contains(self.indicatorPosition){
+                    self.coordScrollInitOffset = .zero
+                }
+            }
+            sender.setTranslation(.zero, in: referredView)
+        }
+    }
+    
+}
+
+//MARK: - Private hit test method for auto detecting child scrollviews
+extension SwipeableView {
+    
+    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+        // if autoDetectScrollViews is false, handle hitTest with his default behavior
+        guard self.autoDetectScrollViews else { return super.hitTest(point, with: event) }
+        guard let hitView = super.hitTest(point, with: event) else { return nil }
+        guard hitView != self else { return hitView }
+        
+        // look for the first available scrollview view from the hit view
+        if let scrollView = self.find(type: UIScrollView.self, from: hitView, limit: self), self.coordinatedScrollView != scrollView {
+            self.coordinatedScrollView = scrollView
+        }
+        return hitView
+    }
+    
+    /// Find the first view/superview from the provided viewm which conforms with the given type
+    /// - Parameters:
+    ///   - type: the view type to search for
+    ///   - view: the start view, from which going up through superviews
+    ///   - limit: the limit view that, if reached, should stop the search and return nil
+    /// - Returns: the match view, or nil if not found
+    private func find<T:UIResponder>(type:T.Type, from view:UIView, limit:UIView) -> T? {
+        guard view != limit else { return nil }
+        if let v = view as? T { return v }
+        guard let superview = view.superview else { return nil }
+        guard let matchView = superview as? T else { return self.find(type: type, from: superview, limit: limit) }
+        return matchView
+    }
 }
 
 //MARK: - Private setup view methods

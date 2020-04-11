@@ -108,6 +108,17 @@ class ShowcaseViewController_1: UIViewController {
         self.swipeView.childViewInteractionOnExpandedOnly = sender.isOn
     }
     
+    @IBAction func onAutoDetectHandleScrollviewsChanged(_ sender: UISwitch) {
+        if sender.isOn {
+            self.swipeView.autoDetectScrollViews = true
+            self.swipeView.handleCoordinatedScrollView = true
+        }else{
+            self.swipeView.autoDetectScrollViews = false
+            self.swipeView.handleCoordinatedScrollView = false
+            self.swipeView.coordinatedScrollView = nil
+        }
+    }
+    
 }
 
 extension ShowcaseViewController_1: SwipeableViewProtocol {

@@ -1582,7 +1582,7 @@ Swipe  right/left</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="AhQ-e0-hSV">
-                                <rect key="frame" x="20" y="108" width="374" height="387.5"/>
+                                <rect key="frame" x="20" y="108" width="374" height="433.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="J4e-74-H4i">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="31"/>
@@ -1766,14 +1766,34 @@ Swipe  right/left</string>
                                             </switch>
                                         </subviews>
                                     </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="2Iv-uw-HdM">
+                                        <rect key="frame" x="0.0" y="392.5" width="374" height="41"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Auto detect and coordinate child scrollviews" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eDz-RQ-QhR">
+                                                <rect key="frame" x="0.0" y="0.0" width="313" height="41"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="cNl-or-sfq">
+                                                <rect key="frame" x="323" y="0.0" width="53" height="31"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="51" id="T8q-WZ-UN2"/>
+                                                </constraints>
+                                                <connections>
+                                                    <action selector="onAutoDetectHandleScrollviewsChanged:" destination="fHs-SV-pMP" eventType="valueChanged" id="tUR-an-cjg"/>
+                                                </connections>
+                                            </switch>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mnk-Ce-kZW" customClass="SwipeableView" customModule="SwipeableView" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="552" width="414" height="310"/>
+                                <rect key="frame" x="0.0" y="575" width="414" height="287"/>
                                 <color key="backgroundColor" red="0.85961114900000002" green="0.85961114900000002" blue="0.85961114900000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eIp-cw-jUY">
-                                <rect key="frame" x="109.5" y="512.5" width="195.5" height="35.5"/>
+                                <rect key="frame" x="109.5" y="535.5" width="195.5" height="35.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Swipe up/down">
