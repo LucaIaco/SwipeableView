@@ -78,9 +78,11 @@ Here an example for achieving this:
 
 The SwipeableView comes along with a small set of configurable parameters and features, such as:
 * hide/show the swipe indicator bar
+* hide the swipe indicator bar when the view is expanded
 * swipe indicator bar position
 * enable or disable rounded corners according with the current swipe indicator bar position
 * customizing the swipe indicator bar colors
+* customize the notch threshold value
 * add or remove a child view controller
 * interaction with any child view controller based on the expanded or collapsed state
 * expand or collapse the SwipeableView programmatically

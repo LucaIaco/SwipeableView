@@ -171,8 +171,16 @@ class SwipeableView: UIView {
         }
     }
     
-    /// The current swipe percentage from 0 to 1 (1 as expanded, 0 as collapsed)
-    private(set) var currentPercentage:CGFloat = 0.0
+    /// The percentage threshold (from 0.0 to 1.0) used to detect when the swipeable view should expand above it,
+    /// or collapse under it, when the user lift the finger from the screen
+    var notchThreshold:CGFloat = 0.5
+    
+    /// The current swipe percentage from 0 to 1
+    private(set) var currentPercentage:CGFloat = 0.0 {
+        didSet {
+            self.oldPercentage = oldValue
+        }
+    }
     
     /// The delegate object which gets notified from this Swipeable view
     weak var delegate:SwipeableViewProtocol?
@@ -188,7 +196,7 @@ class SwipeableView: UIView {
     /// the swipe view which practically allows the user to swipe the view from collapsted to fullscreen
     private weak var swipeEdgeView:UIView?
     /// The thickness of the swipe view
-    private let swipeViewThickness:CGFloat = 25.0
+    private let swipeEdgeViewThickness:CGFloat = 25.0
     /// The size of the swipe bar view inside the swipeEdgeView
     private let swipeEdgeBarViewSize = CGSize(width: 36.0, height: 5.0)
     /// Reference to the swipe view height constraint
@@ -205,6 +213,13 @@ class SwipeableView: UIView {
     
     /// The pan gesture recognizer used to swipe up and down the view
     private weak var panGesture:UIPanGestureRecognizer?
+    
+    /// The previous swipe percentage from 0 to 1
+    private var oldPercentage:CGFloat = 0.0
+    
+    /// The velocity threshold in X and Y (as absolute values), used to identify whether the swipeable view
+    /// should go straight to full expand/collapse when user lift the finger from screen.
+    private let endVelocityThreshold = CGPoint(x: 100, y: 100)
     
     /// The initial `coordinatedScrollView` contentOffset
     private var coordScrollInitOffset:CGPoint = .zero
@@ -360,11 +375,11 @@ extension SwipeableView {
     ///   - animated: animated or not
     private func showSwipeEdgeView(_ show:Bool, animated:Bool = true){
         guard animated else {
-            self.swipeViewThicknessConstraint?.constant = show ? self.swipeViewThickness : 0.0
+            self.swipeViewThicknessConstraint?.constant = show ? self.swipeEdgeViewThickness : 0.0
             self.swipeEdgeView?.alpha = show ? 1.0 : 0.0
             return
         }
-        self.swipeViewThicknessConstraint?.constant = show ? self.swipeViewThickness : 0.0
+        self.swipeViewThicknessConstraint?.constant = show ? self.swipeEdgeViewThickness : 0.0
         // animate
         self.animate(animations: {
             self.layoutIfNeeded()
@@ -430,19 +445,16 @@ extension SwipeableView {
                 self.delegate?.swipeableViewDidPan(swipeableView: self, percentage: newPercentage)
             }
             
-            // update the current percentage
-            self.currentPercentage = newPercentage
+            // update the current percentage if there's an actual translation in the change state
+            if translation != .zero {
+                self.currentPercentage = newPercentage
+            }
             
             // reset the translation if value was set was successful (therefore, the constant was in the range)
             self.finalizeStateChanged(for: sender, didApply: didApply, referredView: referredView)
 
         case .ended, .cancelled:
-            // complete the expanding/collapsing transtion on state ended according with the percentage
-            self.isExpanded = self.flexibleLayout.percentage >= 0.5
-            sender.setTranslation(.zero, in: referredView)
-            // reset the coordinated scrollview initial offset anf content size on state ended in any case
-            self.coordScrollInitOffset = .zero
-            self.coordScrollInitiSize = .zero
+            self.finalizeStateEnded(for: sender, referredView: referredView)
         default:
             break
         }
@@ -476,7 +488,7 @@ extension SwipeableView {
         }
     }
     
-    /// Finalizes the gesture state changed iteration
+    /// Finalizes the gesture state `changed` iteration
     /// - Parameters:
     ///   - sender: the gesture recognizer
     ///   - didApply: indicates if the flexibleLayout set was successful (meaning, if the value was in range)
@@ -505,6 +517,29 @@ extension SwipeableView {
             }
             sender.setTranslation(.zero, in: referredView)
         }
+    }
+    
+    /// Finalizes the gesture state `ended` iteration
+    /// - Parameters:
+    ///   - sender: the gesture recognizer
+    ///   - referredView: the referred view to be considered with the gesture recognizer
+    private func finalizeStateEnded(for sender:UIPanGestureRecognizer, referredView:UIView) {
+        
+        let endVelocity = sender.velocity(in: referredView)
+        let exceedStates = (abs(endVelocity.x) > abs(endVelocityThreshold.x), abs(endVelocity.y) > abs(endVelocityThreshold.y))
+        let expandCollapseToEnd:Bool = self.flexibleLayout.isVerticalAxis && exceedStates.1 || !self.flexibleLayout.isVerticalAxis && exceedStates.0
+        if expandCollapseToEnd, self.oldPercentage != self.currentPercentage {
+             // complete the expand/collapse transition according with the percentage direction (growing or not)
+            self.isExpanded = self.oldPercentage < self.currentPercentage
+        } else {
+            // complete the expand/collapse transition according with the current percentage vs notch threshold
+            self.isExpanded = self.currentPercentage >= self.notchThreshold
+        }
+        
+        sender.setTranslation(.zero, in: referredView)
+        // reset the coordinated scrollview initial offset anf content size on state ended in any case
+        self.coordScrollInitOffset = .zero
+        self.coordScrollInitiSize = .zero
     }
     
 }
@@ -558,7 +593,7 @@ extension SwipeableView {
             self.layer.cornerRadius = 0.0
             return
         }
-        self.indicatorPosition.applyCornerRadius(to: self, radius: self.swipeViewThickness / 2)
+        self.indicatorPosition.applyCornerRadius(to: self, radius: self.swipeEdgeViewThickness / 2)
     }
     
     /// Setup the layout and ui for swipe edge view
@@ -572,7 +607,7 @@ extension SwipeableView {
         self.addSubview(swipeEdgeView)
         
         swipeEdgeView.translatesAutoresizingMaskIntoConstraints = false
-        self.swipeViewThicknessConstraint = self.indicatorPosition.layoutSwipeEdgeView(swipeEdgeView, parentView: self, thickness: swipeViewThickness)
+        self.swipeViewThicknessConstraint = self.indicatorPosition.layoutSwipeEdgeView(swipeEdgeView, parentView: self, thickness: swipeEdgeViewThickness)
         self.swipeEdgeView = swipeEdgeView
         
         // setup the swipe indicator view layout and ui
