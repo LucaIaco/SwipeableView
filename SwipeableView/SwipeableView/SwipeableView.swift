@@ -51,10 +51,13 @@ class SwipeableView: UIView {
     
     //MARK: Public Properties
     
-    /// Get/Set the the expanded state of this view, with the default animation
-    var isExpanded:Bool = false {
-        didSet{
-            self.expand(self.isExpanded, wasExpanded: oldValue)
+    /// Get/Set the expanded state of this view, with the default animation
+    var isExpanded:Bool {
+        set {
+            self.expand(newValue, wasExpanded: self.isExpanded)
+        }
+        get {
+            return self.expanded
         }
     }
     
@@ -66,10 +69,18 @@ class SwipeableView: UIView {
     var isPanGestureInverted: Bool = false
     
     /// Set/Get the swipe indicator visibility, with the default animation
+    ///
+    /// If `isSwipeIndicatorVisible` is set to `true` when the SwipeableView is expanded and
+    /// `hideIndicatorWhenExpanded` is `true`, then the swipe indicator won't be shown
+    ///
     var isSwipeIndicatorVisible:Bool = true {
         didSet{
             guard self.isSwipeIndicatorVisible != oldValue else { return }
-            self.showSwipeEdgeView(self.isSwipeIndicatorVisible)
+            if self.isSwipeIndicatorVisible, self.isExpanded, self.hideIndicatorWhenExpanded {
+                self.showSwipeEdgeView( false, animated: false)
+            } else {
+                self.showSwipeEdgeView(self.isSwipeIndicatorVisible)
+            }
         }
     }
     
@@ -86,10 +97,11 @@ class SwipeableView: UIView {
     /// Indicates if the swipe indicator view should be visible when the Swipeable view is expanded
     ///
     /// If changed to true, while the Swipeable view is expanded, it will hide the indicator right away
-    /// If changed to false, it will
+    /// If changed to false, while the Swipeable view is expanded, it will show the indicator right away
     ///
     var hideIndicatorWhenExpanded:Bool = false {
         didSet{
+            guard self.hideIndicatorWhenExpanded != oldValue else { return }
             if self.isExpanded, self.hideIndicatorWhenExpanded {
                 self.showSwipeEdgeView( false, animated: false)
             } else {
@@ -193,6 +205,8 @@ class SwipeableView: UIView {
     /// List of extra animatable items which are animated along with the expand/collapse of this view
     private(set) var animatableItems: [SwipeableItem] = []
     
+    /// The current expanded/collapsed state of the swipeable view
+    private var expanded:Bool = false
     /// the swipe view which practically allows the user to swipe the view from collapsted to fullscreen
     private weak var swipeEdgeView:UIView?
     /// The thickness of the swipe view
@@ -286,7 +300,7 @@ class SwipeableView: UIView {
     }
     
     /// Removes all the animatable items from the list of animatable items
-    func removeAllanimatableItems() {
+    func removeAllAnimatableItems() {
         self.animatableItems.removeAll()
     }
     
@@ -318,6 +332,9 @@ extension SwipeableView {
     ///   - animated: animated or not
     private func expand(_ expand:Bool, wasExpanded:Bool, animated:Bool = true){
             
+        // set the new expand/collapse flag
+        self.expanded = expand
+        
         // update the current percentage based on the expand/collapse state
         self.currentPercentage = expand ? 1.0 : 0.0
         

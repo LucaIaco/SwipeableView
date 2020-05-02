@@ -13,7 +13,7 @@
 
 In order to use the SwipeableView, all you need to do is adding the view to your view controller or another view which need to contain it, and then "plug" the layout which will make the SwipeableView able to be expanded or collapsed, with or without user gestures (pan gesture recognizer).
 
-The example below will show how do to this, assuming the view has been plugged in a view controller, where we want it to be expandable from the top, up to fullfilling the view controller view (Case 1) or expanding up to double the size (Case 2):
+The example below will show how to do this, assuming the view has been plugged in a view controller, where we want it to be expandable from the top, up to fullfilling the view controller view (Case 1) or expanding up to double the size (Case 2):
 
 ![](images/setup_example.jpg)
 
